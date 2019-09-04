@@ -1,6 +1,5 @@
 require('dotenv').config();
 
-
 module.exports = {
 
   // If using onine database
@@ -9,16 +8,16 @@ module.exports = {
   // },
 
   development: {
-    database: 'books',
-    username: 'steven',
-    password: null,
+    database: 'genbank',
+    username: 'postgres',
+    password: 'aaa',
     host: '127.0.0.1',
     dialect: 'postgres'
   },
 
   test: {
-    database: 'book_test',
-    username: 'steven',
+    database: 'genbank_test',
+    username: 'postgres',
     password: null,
     host: '127.0.0.1',
     dialect: 'postgres'
