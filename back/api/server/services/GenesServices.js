@@ -14,25 +14,25 @@ class GenesService {
       return await database.Genes.create(newGenes);
     } catch (error) {
       throw error;
-    }
+    } 
   }
 
-  static async updateBook(id, updateBook) {
+  static async updateGenes(id, updateGenes) {
     try {
-      const bookToUpdate = await database.Book.findOne({
+      const genesToUpdate = await database.Genes.findOne({
         where: {
           id: Number(id)
         }
       });
 
-      if (bookToUpdate) {
-        await database.Genes.update(updateBook, {
+      if (genesToUpdate) {
+        await database.Genes.update(updateGenes, {
           where: {
             id: Number(id)
           }
         });
 
-        return updateBook;
+        return updateGenes;
       }
       return null;
     } catch (error) {
@@ -48,9 +48,9 @@ class GenesService {
         }
       });
 
-      return theGen
+      return theGen;
     } catch (error) {
-      throw error
+      throw error;
     }
   }
 
@@ -65,9 +65,10 @@ class GenesService {
       if (genToDelete) {
         const deletedGen = await database.Genes.destroy({
           where: { id: Number(id) }
-        })
+        });
+        return deletedGen
       }
-
+      return null;
     } catch (error) {
       throw error;
     }
