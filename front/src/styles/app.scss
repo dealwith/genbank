@@ -1,0 +1,21 @@
+#root {
+  position: relative;
+}
+.g-container {
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.g-aside {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  background-color: #888;
+  height: auto;
+  width: 280px;
+}
+
+.g-main {
+  background-color: #f0f3f5;
+}
