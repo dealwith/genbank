@@ -1,0 +1,14 @@
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+#root {
+  position: relative;
+}
+
+ul,
+li {
+  list-style: none;
+}
