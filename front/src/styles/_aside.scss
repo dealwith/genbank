@@ -1,0 +1,18 @@
+.g-aside {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  background-color: #322d34;
+  height: auto;
+  width: 280px;
+  &__header {
+    height: 70px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  &__main {
+  }
+}

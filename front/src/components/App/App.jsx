@@ -4,7 +4,7 @@ import "regenerator-runtime/runtime";
 
 import { Header } from "../Header";
 import { Main } from "../Main";
-import Aside from "../Aside/Aside";
+import { Aside } from "../Aside";
 
 export const App = () => {
   const [data, setData] = useState([]);
@@ -12,7 +12,7 @@ export const App = () => {
   useEffect(() => {
     const fetchData = async () => {
       return axios
-        .get("http://localhost:5000/api/v1/genes")
+        .get("http://localhost:8000/api/v1/genes")
         .then(result => setData(result.data.data));
     };
     fetchData();
@@ -22,7 +22,7 @@ export const App = () => {
     <>
       <Aside />
       <Main>
-        <Header>asdasd</Header>
+        <Header />
         <ul>
           {data
             ? data.map(obj => <li key={obj.id}>{obj.title}</li>)

@@ -1,0 +1,11 @@
+.g-nav {
+  &-admin {
+    ul > li:not(:last-child) {
+      padding-bottom: 15px;
+    }
+    a {
+      color: white;
+      font-size: 18px;
+    }
+  }
+}
