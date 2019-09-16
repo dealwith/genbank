@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 export const Aside = () => (
   <aside className="g-aside">
@@ -9,10 +10,10 @@ export const Aside = () => (
       <nav className="g-nav g-nav-admin">
         <ul className="g-text-invert">
           <li>
-            <a href="#">main</a>
+            <Link to="/">main</Link>
           </li>
           <li>
-            <a href="#">add table</a>
+            <Link to="/addSpecies">add species</Link>
           </li>
         </ul>
       </nav>

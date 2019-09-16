@@ -10,7 +10,7 @@ const app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cors({ credentials: true, origin: true }));
-
+ 
 const port = process.env.PORT || 8000;
 
 app.use('/api/v1/genes', routes);

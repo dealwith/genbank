@@ -1,8 +1,0 @@
-{
-  "presets": ["env", "react"],
-  "plugins": [
-    "@babel/plugin-transform-regenerator",
-    "transform-class-properties",
-    "transform-object-rest-spread"
-  ]
-}

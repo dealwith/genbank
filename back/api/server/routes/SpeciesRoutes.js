@@ -1,0 +1,8 @@
+import { Router } from 'express';
+import SpeciesController from '../controllers/SpeciesController';
+
+const speciesRouter = Router();
+
+speciesRouter.get('/', SpeciesController.getAllSpecies());
+
+export default speciesRouter;

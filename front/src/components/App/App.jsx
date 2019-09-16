@@ -1,34 +1,20 @@
-import React, { useEffect, useState } from "react";
-import axios from "axios";
+import React from "react";
 import "regenerator-runtime/runtime";
+import { BrowserRouter as Router, Route } from "react-router-dom";
 
 import { Header } from "../Header";
 import { Main } from "../Main";
 import { Aside } from "../Aside";
+import { AddSpeciesForm } from "../Form";
 
 export const App = () => {
-  const [data, setData] = useState([]);
-
-  useEffect(() => {
-    const fetchData = async () => {
-      return axios
-        .get("http://localhost:8000/api/v1/genes")
-        .then(result => setData(result.data.data));
-    };
-    fetchData();
-  }, []);
-
   return (
-    <>
+    <Router>
       <Aside />
       <Main>
         <Header />
-        <ul>
-          {data
-            ? data.map(obj => <li key={obj.id}>{obj.title}</li>)
-            : "no data"}
-        </ul>
+        <Route path="/" exact component={AddSpeciesForm} />
       </Main>
-    </>
+    </Router>
   );
 };

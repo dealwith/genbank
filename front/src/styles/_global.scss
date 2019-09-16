@@ -4,6 +4,11 @@
   box-sizing: border-box;
 }
 
+:root {
+  --aside-width: 280px;
+  --header-height: 70px;
+}
+
 #root {
   position: relative;
 }
