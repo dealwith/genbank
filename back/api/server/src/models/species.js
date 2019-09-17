@@ -1,6 +1,7 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
   const Species = sequelize.define('Species', {
+    abc: DataTypes.STRING,
     name: DataTypes.STRING,
     name_link: DataTypes.STRING,
     guardCategory: DataTypes.STRING,
@@ -41,6 +42,7 @@ module.exports = (sequelize, DataTypes) => {
     NcbiCodeMATK: DataTypes.STRING,
     NcbiCodeMATK_link: DataTypes.STRING,
     speciesIdentificationResultMATK: DataTypes.STRING,
+    
   }, {});
   Species.associate = function(models) {
     // associations can be defined here

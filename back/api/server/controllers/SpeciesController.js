@@ -1,9 +1,9 @@
 import SpeciesServices from '../services/SpeciesServices';
 import Util from '../utils/Utils';
 
-const util = Util();
+const util = new Util();
 
-export default class SpeciesController {
+class SpeciesController {
   static async getAllSpecies(req, res) {
     try {
       const allSpecies = await SpeciesServices.getAllSpecies();
@@ -25,9 +25,14 @@ export default class SpeciesController {
 
     try {
       const createdSpecies = await SpeciesServices.addSpecies(newSpecies);
-      util.
+      util.send(201, 'Genes added!', createdSpecies);
+      return util.send(res);
     } catch (error) {
-      
+      util.setError(400, error.message);
+      return util.send(res);
     }
   }
 }
+
+
+export default SpeciesController;

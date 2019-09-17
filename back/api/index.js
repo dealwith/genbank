@@ -2,7 +2,10 @@ import config from 'dotenv';
 import express from 'express';
 import bodyParser from 'body-parser';
 import cors from 'cors';
-import routes from './server/routes/GenesRoutes';
+
+import genesRouter from './server/routes/GenesRoutes';
+// import speciesRouter from './server/routes/SpeciesRoutes';
+import { GENES_API, SPECIES_API } from './server/constants/paths';
 
 config.config();
 
@@ -13,8 +16,10 @@ app.use(cors({ credentials: true, origin: true }));
  
 const port = process.env.PORT || 8000;
 
-app.use('/api/v1/genes', routes);
+app.use(GENES_API, genesRouter);
+// app.use(SPECIES_API, speciesRouter);
 
+debugger;
 app.get('*', (req, res) => res.status(200).send({
   message: 'Welcome to this API.'
 }));

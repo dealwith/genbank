@@ -111,4 +111,4 @@ class GenesController {
   }
 }
 
-export default GenesController;
+export default GenesController

@@ -1,0 +1,13 @@
+{
+    "tables": {
+        "Genes": {
+            "tableName": "Genes",
+            "indexes": []
+        },
+        "Species": {
+            "tableName": "Species",
+            "indexes": []
+        }
+    },
+    "revision": 1
+}
