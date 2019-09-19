@@ -3,6 +3,7 @@ import { Form, Button } from "react-bootstrap";
 import axios from "axios";
 
 import { InputLink, Input } from "../Inputs";
+import { SPECIES_API } from "../../constants/path";
 
 export class AddSpeciesForm extends Component {
   constructor(props) {
@@ -10,44 +11,44 @@ export class AddSpeciesForm extends Component {
     this.state = {
       name: "",
       name_link: "",
-      guardCategory: "",
-      sampleNumber: "",
-      bankCode: "",
-      bankCode_link: "",
-      year_gatheringPlace: "",
-      year_gatheringPlace_link: "",
-      sequenceITS2: "",
-      sequenceITS2_link: "",
-      sequenceLengthITS2: 0,
-      coveragePercentITS2: 0,
-      NcbiIdentityITS2: 0,
-      NcbiCodeITS2: "",
-      NcbiCodeITS2_link: "",
-      speciesIdentificationResultITS2: "",
-      sequenceRbCl: "",
-      sequenceRbCl_link: "",
-      sequenceLengthRbCl: 0,
-      coveragePercentRbCl: 0,
-      NcbiIdentityRbCl: 0,
-      NcbiCodeRbCl: "",
-      NcbiCodeRbCl_link: "",
-      speciesIdentificationResultRbCl: "",
-      sequencePSB: "",
-      sequencePSB_link: "",
-      sequenceLengthPSB: 0,
-      coveragePercentPSB: 0,
-      NcbiIdentityPSB: 0,
-      NcbiCodePSB: "",
-      NcbiCodePSB_link: "",
-      speciesIdentificationResultPSB: "",
-      sequenceMATK: "",
-      sequenceMATK_link: "",
-      sequenceLengthMATK: 0,
-      coveragePercentMATK: 0,
-      NcbiIdentityMATK: 0,
-      NcbiCodeMATK: "",
-      NcbiCodeMATK_link: "",
-      speciesIdentificationResultMATK: ""
+      guard_category: "",
+      sample_number: "",
+      bank_code: "",
+      bank_code_link: "",
+      year_gathering_place: "",
+      year_gathering_place_link: "",
+      sequence__itst2: "",
+      sequence_itst2_link: "",
+      sequence_length_itst2: 0,
+      coverage_percent_itst2: 0,
+      ncbi_identity_itst2: 0,
+      ncbi_code_itst2: "",
+      ncbi_code_itst2_link: "",
+      species_identification_result_itst2: "",
+      sequence_rbcl: "",
+      sequence_rbcl_link: "",
+      sequence_length_rbcl: 0,
+      coverage_percent_rbcl: 0,
+      ncbi_identity_rbcl: 0,
+      ncbi_code_rbcl: "",
+      ncbi_code_rbcl_link: "",
+      species_identification_result_rbcl: "",
+      sequence_psb: "",
+      sequence_psb_link: "",
+      sequence_length_psb: 0,
+      coverage_percent_psb: 0,
+      ncbi_identity_psb: 0,
+      ncbi_code_psb: "",
+      ncbi_code_psb_link: "",
+      species_identification_result_psb: "",
+      sequence_matk: "",
+      sequence_matk_link: "",
+      sequence_length_matk: 0,
+      coverag_percent_matk: 0,
+      ncbi_identity_matk: 0,
+      ncbi_code_matk: "",
+      ncbi_code_matk_link: "",
+      species_identification_result_matk: ""
     };
   }
 
@@ -62,139 +63,139 @@ export class AddSpeciesForm extends Component {
   handleSubmit = e => {
     e.preventDefault();
     const {
-      guardCategory,
-      sampleNumber,
       name,
       name_link,
-      bankCode,
-      bankcode_link,
-      year_gatheringPlace,
-      year_gatheringPlace_link,
-      sequenceITS2,
-      sequenceITS2_link,
-      sequenceLengthITS2,
-      coveragePercentITS2,
-      NcbiIdentityITS2,
-      NcbiCodeITS2,
-      NcbiCodeITS2_link,
-      speciesIdentificationResultITS2,
-      sequenceRbCl,
-      sequenceRbCl_link,
-      sequenceLengthRbCl,
-      coveragePercentRbCl,
-      NcbiIdentityRbCl,
-      NcbiCodeRbCl,
-      NcbiCodeRbCl_link,
-      speciesIdentificationResultRbCl,
-      sequencePSB,
-      sequencePSB_link,
-      sequenceLengthPSB,
-      coveragePercentPSB,
-      NcbiIdentityPSB,
-      NcbiCodePSB,
-      NcbiCodePSB_link,
-      speciesIdentificationResultPSB,
-      sequenceMATK,
-      sequenceMATK_link,
-      sequenceLengthMATK,
-      coveragePercentMATK,
-      NcbiIdentityMATK,
-      NcbiCodeMATK,
-      NcbiCodeMATK_link,
-      speciesIdentificationResultMATK
+      guard_category,
+      sample_number,
+      bank_code,
+      bank_code_link,
+      year_gathering_place,
+      year_gathering_place_link,
+      sequence__itst2,
+      sequence_itst2_link,
+      sequence_length_itst2,
+      coverage_percent_itst2,
+      ncbi_identity_itst2,
+      ncbi_code_itst2,
+      ncbi_code_itst2_link,
+      species_identification_result_itst2,
+      sequence_rbcl,
+      sequence_rbcl_link,
+      sequence_length_rbcl,
+      coverage_percent_rbcl,
+      ncbi_identity_rbcl,
+      ncbi_code_rbcl,
+      ncbi_code_rbcl_link,
+      species_identification_result_rbcl,
+      sequence_psb,
+      sequence_psb_link,
+      sequence_length_psb,
+      coverage_percent_psb,
+      ncbi_identity_psb,
+      ncbi_code_psb,
+      ncbi_code_psb_link,
+      species_identification_result_psb,
+      sequence_matk,
+      sequence_matk_link,
+      sequence_length_matk,
+      coverag_percent_matk,
+      ncbi_identity_matk,
+      ncbi_code_matk,
+      ncbi_code_matk_link,
+      species_identification_result_matk
     } = this.state;
 
     const req = {
-      guardCategory,
-      sampleNumber,
       name,
       name_link,
-      bankCode,
-      bankcode_link,
-      year_gatheringPlace,
-      year_gatheringPlace_link,
-      sequenceITS2,
-      sequenceITS2_link,
-      sequenceLengthITS2,
-      coveragePercentITS2,
-      NcbiIdentityITS2,
-      NcbiCodeITS2,
-      NcbiCodeITS2_link,
-      speciesIdentificationResultITS2,
-      sequenceRbCl,
-      sequenceRbCl_link,
-      sequenceLengthRbCl,
-      coveragePercentRbCl,
-      NcbiIdentityRbCl,
-      NcbiCodeRbCl,
-      NcbiCodeRbCl_link,
-      speciesIdentificationResultRbCl,
-      sequencePSB,
-      sequencePSB_link,
-      sequenceLengthPSB,
-      coveragePercentPSB,
-      NcbiIdentityPSB,
-      NcbiCodePSB,
-      NcbiCodePSB_link,
-      speciesIdentificationResultPSB,
-      sequenceMATK,
-      sequenceMATK_link,
-      sequenceLengthMATK,
-      coveragePercentMATK,
-      NcbiIdentityMATK,
-      NcbiCodeMATK,
-      NcbiCodeMATK_link,
-      speciesIdentificationResultMATK
+      guard_category,
+      sample_number,
+      bank_code,
+      bank_code_link,
+      year_gathering_place,
+      year_gathering_place_link,
+      sequence__itst2,
+      sequence_itst2_link,
+      sequence_length_itst2,
+      coverage_percent_itst2,
+      ncbi_identity_itst2,
+      ncbi_code_itst2,
+      ncbi_code_itst2_link,
+      species_identification_result_itst2,
+      sequence_rbcl,
+      sequence_rbcl_link,
+      sequence_length_rbcl,
+      coverage_percent_rbcl,
+      ncbi_identity_rbcl,
+      ncbi_code_rbcl,
+      ncbi_code_rbcl_link,
+      species_identification_result_rbcl,
+      sequence_psb,
+      sequence_psb_link,
+      sequence_length_psb,
+      coverage_percent_psb,
+      ncbi_identity_psb,
+      ncbi_code_psb,
+      ncbi_code_psb_link,
+      species_identification_result_psb,
+      sequence_matk,
+      sequence_matk_link,
+      sequence_length_matk,
+      coverag_percent_matk,
+      ncbi_identity_matk,
+      ncbi_code_matk,
+      ncbi_code_matk_link,
+      species_identification_result_matk
     };
 
-    axios.post(req);
+    axios.post(SPECIES_API, req).catch(err => console.error(err));
   };
 
   render() {
-    let {
-      guardCategory,
-      sampleNumber,
+    const {
       name,
       name_link,
-      bankCode,
-      bankcode_link,
-      year_gatheringPlace,
-      year_gatheringPlace_link,
-      sequenceITS2,
-      sequenceITS2_link,
-      sequenceLengthITS2,
-      coveragePercentITS2,
-      NcbiIdentityITS2,
-      NcbiCodeITS2,
-      NcbiCodeITS2_link,
-      speciesIdentificationResultITS2,
-      sequenceRbCl,
-      sequenceRbCl_link,
-      sequenceLengthRbCl,
-      coveragePercentRbCl,
-      NcbiIdentityRbCl,
-      NcbiCodeRbCl,
-      NcbiCodeRbCl_link,
-      speciesIdentificationResultRbCl,
-      sequencePSB,
-      sequencePSB_link,
-      sequenceLengthPSB,
-      coveragePercentPSB,
-      NcbiIdentityPSB,
-      NcbiCodePSB,
-      NcbiCodePSB_link,
-      speciesIdentificationResultPSB,
-      sequenceMATK,
-      sequenceMATK_link,
-      sequenceLengthMATK,
-      coveragePercentMATK,
-      NcbiIdentityMATK,
-      NcbiCodeMATK,
-      NcbiCodeMATK_link,
-      speciesIdentificationResultMATK
+      guard_category,
+      sample_number,
+      bank_code,
+      bank_code_link,
+      year_gathering_place,
+      year_gathering_place_link,
+      sequence__itst2,
+      sequence_itst2_link,
+      sequence_length_itst2,
+      coverage_percent_itst2,
+      ncbi_identity_itst2,
+      ncbi_code_itst2,
+      ncbi_code_itst2_link,
+      species_identification_result_itst2,
+      sequence_rbcl,
+      sequence_rbcl_link,
+      sequence_length_rbcl,
+      coverage_percent_rbcl,
+      ncbi_identity_rbcl,
+      ncbi_code_rbcl,
+      ncbi_code_rbcl_link,
+      species_identification_result_rbcl,
+      sequence_psb,
+      sequence_psb_link,
+      sequence_length_psb,
+      coverage_percent_psb,
+      ncbi_identity_psb,
+      ncbi_code_psb,
+      ncbi_code_psb_link,
+      species_identification_result_psb,
+      sequence_matk,
+      sequence_matk_link,
+      sequence_length_matk,
+      coverag_percent_matk,
+      ncbi_identity_matk,
+      ncbi_code_matk,
+      ncbi_code_matk_link,
+      species_identification_result_matk
     } = this.state;
 
-    let { handleInputChange, handleSubmit } = this;
+    const { handleInputChange, handleSubmit } = this;
 
     return (
       <Form onSubmit={handleSubmit}>
@@ -207,31 +208,31 @@ export class AddSpeciesForm extends Component {
           onChange={handleInputChange}
         />
         <Input
-          name="guardCategory"
+          name="guard_category"
           labelName="Категория охраны"
-          value={guardCategory}
+          value={guard_category}
           onChange={handleInputChange}
         />
         <Input
-          name="sampleNumber"
+          name="sample_number"
           labelName="№ п/п образца"
-          value={sampleNumber}
+          value={sample_number}
           onChange={handleInputChange}
         />
         <InputLink
-          name="bankCode"
+          name="bank_code"
           labelName="Шифр банка"
-          value={bankCode}
-          linkname="bankCode_link"
-          linkValue={bankcode_link}
+          value={bank_code}
+          linkname="bank_code_link"
+          linkValue={bank_code_link}
           onChange={handleInputChange}
         />
         <InputLink
           labelName="Год, место сбора"
-          name="year_gatheringPlace"
-          linkname="year_gatheringPlace_link"
-          value={year_gatheringPlace}
-          linkValue={year_gatheringPlace_link}
+          name="year_gathering_place"
+          linkname="year_gathering_place_link"
+          value={year_gathering_place}
+          linkValue={year_gathering_place_link}
           onChange={handleInputChange}
         />
         <hr />
@@ -239,46 +240,46 @@ export class AddSpeciesForm extends Component {
         <hr />
         <InputLink
           labelName="Буквенный сиквенс (штрихкод)"
-          name="sequenceITS2"
-          linkname="sequenceITS2_link"
-          value={sequenceITS2}
-          linkValue={sequenceITS2_link}
+          name="sequence__itst2"
+          linkname="sequence_itst2_link"
+          value={sequence__itst2}
+          linkValue={sequence_itst2_link}
           onChange={handleInputChange}
         />
         <Input
-          name="sequenceLengthITS2"
+          name="sequence_length_itst2"
           labelName="Длина сиквенса"
           type="number"
-          value={sequenceLengthITS2}
+          value={sequence_length_itst2}
           onChange={handleInputChange}
         />
         <Input
-          name="coveragePercentITS2"
+          name="coverage_percent_itst2"
           labelName="% покрытия (сравнение  с NCBI)"
           type="number"
-          value={coveragePercentITS2}
+          value={coverage_percent_itst2}
           onChange={handleInputChange}
         />
         <Input
-          name="NcbiIdentityITS2"
+          name="ncbi_identity_itst2"
           labelName="Идентичность с NCBI,%"
           type="number"
-          value={NcbiIdentityITS2}
+          value={ncbi_identity_itst2}
           onChange={handleInputChange}
         />
         <InputLink
           labelName="Код последовательности в NCBI"
-          name="NcbiCodeITS2"
+          name="ncbi_code_itst2"
           linkname="NcbiCodeITS2_link"
-          value={NcbiCodeITS2}
-          linkValue={NcbiCodeITS2_link}
+          value={ncbi_code_itst2}
+          linkValue={ncbi_code_itst2_link}
           onChange={handleInputChange}
         />
         <Input
-          name="speciesIdentificationResultITS2"
+          name="species_identification_result_itst2"
           labelName="Результат видоидентификации"
           type="number"
-          value={speciesIdentificationResultITS2}
+          value={species_identification_result_itst2}
           onChange={handleInputChange}
         />
         <hr />
@@ -286,46 +287,46 @@ export class AddSpeciesForm extends Component {
         <hr />
         <InputLink
           labelName="Буквенный сиквенс (штрихкод)"
-          name="sequenceRbCl"
-          linkname="sequenceRbCl_link"
-          value={sequenceRbCl}
-          linkValue={sequenceRbCl_link}
+          name="sequence_rbcl"
+          linkname="sequence_rbcl_link"
+          value={sequence_rbcl}
+          linkValue={sequence_rbcl_link}
           onChange={handleInputChange}
         />
         <Input
-          name="sequenceLengthRbCl"
+          name="sequence_length_rbcl"
           labelName="Длина сиквенса"
           type="number"
-          value={sequenceLengthRbCl}
+          value={sequence_length_rbcl}
           onChange={handleInputChange}
         />
         <Input
-          name="coveragePercentRbCl"
+          name="coverage_percent_rbcl"
           labelName="% покрытия (сравнение  с NCBI)"
           type="number"
-          value={coveragePercentRbCl}
+          value={coverage_percent_rbcl}
           onChange={handleInputChange}
         />
         <Input
-          name="NcbiIdentityRbCl"
+          name="ncbi_identity_rbcl"
           labelName="Идентичность с NCBI,%"
           type="number"
-          value={NcbiIdentityRbCl}
+          value={ncbi_identity_rbcl}
           onChange={handleInputChange}
         />
         <InputLink
           labelName="Код последовательности в NCBI"
-          name="NcbiCodeRbCl"
-          linkname="NcbiCodeRbCl_link"
-          value={NcbiCodeRbCl}
-          linkValue={NcbiCodeRbCl_link}
+          name="ncbi_code_rbcl"
+          linkname="ncbi_code_rbcl_link"
+          value={ncbi_code_rbcl}
+          linkValue={ncbi_code_rbcl_link}
           onChange={handleInputChange}
         />
         <Input
-          name="speciesIdentificationResultRbCl"
+          name="species_identification_result_rbcl"
           labelName="Результат видоидентификации"
           type="number"
-          value={speciesIdentificationResultRbCl}
+          value={species_identification_result_rbcl}
           onChange={handleInputChange}
         />
         <hr />
@@ -333,46 +334,46 @@ export class AddSpeciesForm extends Component {
         <hr />
         <InputLink
           labelName="Буквенный сиквенс (штрихкод)"
-          name="sequencePSB"
-          linkname="sequencePSB_link"
-          value={sequencePSB}
-          linkValue={sequencePSB_link}
+          name="sequence_psb"
+          linkname="sequence_psb_link"
+          value={sequence_psb}
+          linkValue={sequence_psb_link}
           onChange={handleInputChange}
         />
         <Input
-          name="sequenceLengthPSB"
+          name="sequence_length_psb"
           labelName="Длина сиквенса"
           type="number"
-          value={sequenceLengthPSB}
+          value={sequence_length_psb}
           onChange={handleInputChange}
         />
         <Input
-          name="coveragePercentPSB"
+          name="coverage_percent_psb"
           labelName="% покрытия (сравнение  с NCBI)"
           type="number"
-          value={coveragePercentPSB}
+          value={coverage_percent_psb}
           onChange={handleInputChange}
         />
         <Input
-          name="NcbiIdentityPSB"
+          name="ncbi_identity_psb"
           labelName="Идентичность с NCBI,%"
           type="number"
-          value={NcbiIdentityPSB}
+          value={ncbi_identity_psb}
           onChange={handleInputChange}
         />
         <InputLink
           labelName="Код последовательности в NCBI"
-          name="NcbiCodePSB"
-          linkname="NcbiCodePSB_link"
-          value={NcbiCodePSB}
-          linkValue={NcbiCodePSB_link}
+          name="ncbi_code_psb"
+          linkname="ncbi_code_psb_link"
+          value={ncbi_code_psb}
+          linkValue={ncbi_code_psb_link}
           onChange={handleInputChange}
         />
         <Input
-          name="speciesIdentificationResultPSB"
+          name="species_identification_result_psb"
           labelName="Результат видоидентификации"
           type="number"
-          value={speciesIdentificationResultPSB}
+          value={species_identification_result_psb}
           onChange={handleInputChange}
         />
         <hr />
@@ -380,46 +381,46 @@ export class AddSpeciesForm extends Component {
         <hr />
         <InputLink
           labelName="Буквенный сиквенс (штрихкод)"
-          name="sequenceMATK"
-          linkname="sequenceMATK_link"
-          value={sequenceMATK}
-          linkValue={sequenceMATK_link}
+          name="sequence_matk"
+          linkname="sequence_matk_link"
+          value={sequence_matk}
+          linkValue={sequence_matk_link}
           onChange={handleInputChange}
         />
         <Input
-          name="sequenceLengthMATK"
+          name="sequence_length_matk"
           labelName="Длина сиквенса"
           type="number"
-          value={sequenceLengthMATK}
+          value={sequence_length_matk}
           onChange={handleInputChange}
         />
         <Input
-          name="coveragePercentMATK"
+          name="coverag_percent_matk"
           labelName="% покрытия (сравнение  с NCBI)"
           type="number"
-          value={coveragePercentMATK}
+          value={coverag_percent_matk}
           onChange={handleInputChange}
         />
         <Input
-          name="NcbiIdentityMATK"
+          name="ncbi_identity_matk"
           labelName="Идентичность с NCBI,%"
           type="number"
-          value={NcbiIdentityMATK}
+          value={ncbi_identity_matk}
           onChange={handleInputChange}
         />
         <InputLink
           labelName="Код последовательности в NCBI"
-          name="NcbiCodeMATK"
-          linkname="NcbiCodeMATK_link"
-          value={NcbiCodeMATK}
-          linkValue={NcbiCodeMATK_link}
+          name="ncbi_code_matk"
+          linkname="ncbi_code_matk_link"
+          value={ncbi_code_matk}
+          linkValue={ncbi_code_matk_link}
           onChange={handleInputChange}
         />
         <Input
-          name="speciesIdentificationResultMATK"
+          name="species_identification_result_matk"
           labelName="Результат видоидентификации"
           type="number"
-          value={speciesIdentificationResultMATK}
+          value={species_identification_result_matk}
           onChange={handleInputChange}
         />
         <Button variant="primary" type="submit">

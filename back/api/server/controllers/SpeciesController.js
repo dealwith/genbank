@@ -24,10 +24,12 @@ class SpeciesController {
     const newSpecies = req.body;
 
     try {
+      console.log(newSpecies);
       const createdSpecies = await SpeciesServices.addSpecies(newSpecies);
-      util.send(201, 'Genes added!', createdSpecies);
+      util.setSuccess(201, 'Species added!', createdSpecies);
       return util.send(res);
     } catch (error) {
+      console.log(error)
       util.setError(400, error.message);
       return util.send(res);
     }

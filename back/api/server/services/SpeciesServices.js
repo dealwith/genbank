@@ -1,4 +1,4 @@
-import database from '../src/models';
+import database, { sequelize } from '../src/models';
 
 class SpeciesServices {
   static async getAllSpecies() {
@@ -14,7 +14,7 @@ class SpeciesServices {
       return await database.Species.create(newSpecies);
     } catch (error) {
       throw error;
-    } 
+    }
   }
 
   static async getSpecies(id) {

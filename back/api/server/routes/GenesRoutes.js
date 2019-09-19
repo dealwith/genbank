@@ -1,4 +1,5 @@
 import { Router } from 'express';
+
 import GenesController from '../controllers/GenesController';
 
 const genesRouter = Router();

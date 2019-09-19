@@ -9,130 +9,130 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       name: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
       },
       name_link: {
         type: Sequelize.STRING
       },
-      guardCategory: {
+      guard_category: {
         type: Sequelize.STRING
       },
-      sampleNumber: {
+      sample_number: {
         type: Sequelize.STRING
       },
-      bankCode: {
+      bank_code: {
         type: Sequelize.STRING
       },
-      bankCode_link: {
+      bank_code_link: {
         type: Sequelize.STRING
       },
-      year_gatheringPlace: {
+      year_gathering_place: {
         type: Sequelize.STRING
       },
-      year_gatheringPlace_link: {
+      year_gathering_place_link: {
         type: Sequelize.STRING
       },
-      sequenceITS2: {
+      sequence__itst2: {
         type: Sequelize.STRING,
       },
-      sequenceITS2_link: {
+      sequence_itst2_link: {
         type: Sequelize.STRING,
       },
-      sequenceLengthITS2: {
+      sequence_length_itst2: {
         type: Sequelize.INTEGER,
       },
-      coveragePercentITS2: {
+      coverage_percent_itst2: {
         type: Sequelize.INTEGER
       },
-      NcbiIdentityITS2: {
+      ncbi_identity_itst2: {
         type: Sequelize.INTEGER,
       },
-      NcbiCodeITS2: {
+      ncbi_code_itst2: {
         type: Sequelize.STRING,
       },
-      NcbiCodeITS2_link: {
+      ncbi_code_itst2_link: {
         type: Sequelize.STRING,
       },
-      speciesIdentificationResultITS2: {
+      species_identification_result_itst2: {
         type: Sequelize.STRING
       },
-      sequenceRbCl: {
+      sequence_rbcl: {
         type: Sequelize.STRING
       },
-      sequenceRbCl_link: {
+      sequence_rbcl_link: {
         type: Sequelize.STRING
       },
-      sequenceLengthRbCl: {
+      sequence_length_rbcl: {
         type: Sequelize.INTEGER,
       },
-      coveragePercentRbCl: {
+      coverage_percent_rbcl: {
         type: Sequelize.INTEGER,
       },
-      NcbiIdentityRbCl: {
+      ncbi_identity_rbcl: {
         type: Sequelize.INTEGER,
       },
-      NcbiCodeRbCl: {
+      ncbi_code_rbcl: {
         type: Sequelize.STRING,
       },
-      NcbiCodeRbCl_link: {
+      ncbi_code_rbcl_link: {
         type: Sequelize.STRING,
       },
-      speciesIdentificationResultRbCl: {
+      species_identification_result_rbcl: {
         type: Sequelize.STRING,
       },
-      sequencePSB: {
+      sequence_psb: {
         type: Sequelize.STRING,
       },
-      sequencePSB_link: {
+      sequence_psb_link: {
         type: Sequelize.STRING,
       },
-      sequenceLengthPSB: {
+      sequence_length_psb: {
         type: Sequelize.INTEGER,
       },
-      coveragePercentPSB: {
+      coverage_percent_psb: {
         type: Sequelize.INTEGER,
       },
-      NcbiIdentityPSB: {
+      ncbi_identity_psb: {
         type: Sequelize.INTEGER,
       },
-      NcbiCodePSB: {
+      ncbi_code_psb: {
         type: Sequelize.STRING,
       },
-      NcbiCodePSB_link: {
+      ncbi_code_psb_link: {
         type: Sequelize.STRING,
       },
-      speciesIdentificationResultPSB: {
+      species_identification_result_psb: {
         type: Sequelize.STRING,
       },
-      sequenceMATK: {
+      sequence_matk: {
         type: Sequelize.STRING,
       },
-      sequenceMATK_link: {
+      sequence_matk_link: {
         type: Sequelize.STRING,
       },
-      sequenceLengthMATK: {
+      sequence_length_matk: {
         type: Sequelize.INTEGER,
       },
-      coveragePercentMATK: {
+      coverag_percent_matk: {
         type: Sequelize.INTEGER,
       },
-      NcbiIdentityMATK: {
+      ncbi_identity_matk: {
         type: Sequelize.INTEGER,
       },
-      NcbiCodeMATK: {
+      ncbi_code_matk: {
         type: Sequelize.STRING,
       },
-      NcbiCodeMATK_link: {
+      ncbi_code_matk_link: {
         type: Sequelize.STRING,
       },
-      speciesIdentificationResultMATK: {
+      species_identification_result_matk: {
         type: Sequelize.STRING
       },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE
       },
-      updatedAt: {
+      updateAt: {
         allowNull: false,
         type: Sequelize.DATE
       }

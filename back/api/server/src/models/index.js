@@ -7,6 +7,8 @@ const basename = path.basename(__filename);
 const env = process.env.NODE_ENV || 'development';
 const config = require(__dirname + '/../config/config.js')[env];
 const db = {};
+const uniqueObj = {};
+
 
 let sequelize;
 if (config.use_env_variable) {
@@ -22,7 +24,13 @@ fs
   })
   .forEach(file => {
     const model = sequelize['import'](path.join(__dirname, file));
+
+    if (uniqueObj[model.name]) {
+      throw `Current modelName already exists: ${model.name}`;
+    }
+
     db[model.name] = model;
+    uniqueObj[model.name] = true;
   });
 
 Object.keys(db).forEach(modelName => {
