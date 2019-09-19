@@ -1,5 +1,6 @@
 import SpeciesServices from '../services/SpeciesServices';
 import Util from '../utils/Utils';
+import { url } from 'inspector';
 
 const util = new Util();
 
@@ -37,6 +38,24 @@ class SpeciesController {
     } catch (error) {
       util.setError(400, error)
       util.send(res)
+    }
+  }
+
+  static async getTheSpecies(req, res) {
+    try {
+      const theSpecies = await SpeciesServices.getSpecies(req.params.speciesId);
+
+      if (theSpecies) {
+        util.setSuccess(200, 'Species retrieved', theSpecies);
+      } else {
+        util.setSuccess(200, 'Dont found sush species')
+      }
+
+      return util.send(res);
+
+    } catch (error) {
+      util.setError(400, error);
+      util.send(res);
     }
   }
 

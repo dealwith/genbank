@@ -1,11 +1,11 @@
 import { Router } from 'express';
 
 import SpeciesController from '../controllers/SpeciesController';
-import { MAIN_URL } from '../constants/paths';
 
 const speciesRouter = Router();
  
 speciesRouter.get('/', SpeciesController.getAllSpecies);
+speciesRouter.get('/:speciesId', SpeciesController.getTheSpecies);
 speciesRouter.post('/', SpeciesController.addSpecies);
 speciesRouter.get('/min', SpeciesController.getMinSpecies);
 // speciesRouter.post('/', (req, res) => res.send('hello'));
