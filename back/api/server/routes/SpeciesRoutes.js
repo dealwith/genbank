@@ -7,6 +7,7 @@ const speciesRouter = Router();
  
 speciesRouter.get('/', SpeciesController.getAllSpecies);
 speciesRouter.post('/', SpeciesController.addSpecies);
+speciesRouter.get('/min', SpeciesController.getMinSpecies);
 // speciesRouter.post('/', (req, res) => res.send('hello'));
 
 export default speciesRouter;

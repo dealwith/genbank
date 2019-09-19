@@ -9,14 +9,6 @@ class SpeciesServices {
     }
   }
 
-  static async addSpecies(newSpecies) {
-    try {
-      return await database.Species.create(newSpecies);
-    } catch (error) {
-      throw error;
-    }
-  }
-
   static async getSpecies(id) {
     try {
       const theSpecies = await database.Species.findOne({
@@ -26,6 +18,34 @@ class SpeciesServices {
       });
 
       return theSpecies;
+    } catch (error) {
+      throw error;
+    }
+  }
+
+  static async getMinSpecies() {
+    try {
+      return await database.Species.findAll({
+        attributes: [
+          'id',
+          'name',
+          'name_link',
+          'guard_category',
+          'sample_number',
+          'bank_code',
+          'bank_code_link',
+          'year_gathering_place',
+          'year_gathering_place_link'
+        ]
+      })
+    } catch (error) {
+      throw error;
+    }
+  }
+
+  static async addSpecies(newSpecies) {
+    try {
+      return await database.Species.create(newSpecies);
     } catch (error) {
       throw error;
     }

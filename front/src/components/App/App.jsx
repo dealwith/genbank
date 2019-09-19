@@ -6,6 +6,7 @@ import { Header } from "../Header";
 import { Main } from "../Main";
 import { Aside } from "../Aside";
 import { AddSpeciesForm } from "../Form";
+import { BasicTable } from "../Tables/BasicTable";
 
 export const App = () => {
   return (
@@ -13,7 +14,8 @@ export const App = () => {
       <Aside />
       <Main>
         <Header />
-        <Route path="/" exact component={AddSpeciesForm} />
+        <Route path="/" exact component={BasicTable} />
+        <Route path="/add-species" component={AddSpeciesForm} />
       </Main>
     </Router>
   );

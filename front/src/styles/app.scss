@@ -10,7 +10,7 @@
 
 .g-main {
   background-color: #f0f3f5;
-  height: 100%;
+  height: calc(100vh - var(--header-height));
   width: calc(100% - var(--aside-width));
   position: relative;
   left: var(--aside-width);
@@ -26,6 +26,10 @@
   position: fixed;
   top: 0;
   right: 0;
+}
+
+.g-form-group-link {
+  margin-left: 1rem;
 }
 
 .g-text {

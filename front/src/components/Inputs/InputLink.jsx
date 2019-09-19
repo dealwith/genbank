@@ -18,7 +18,7 @@ export const InputLink = props => {
 
   return (
     <Form.Row>
-      <Form.Group controlId="formBasicEmail">
+      <Form.Group controlId={`input-${labelName}`}>
         <Form.Label>{labelName}</Form.Label>
         <Form.Control
           type={type}
@@ -28,7 +28,10 @@ export const InputLink = props => {
           onChange={onChange}
         />
       </Form.Group>
-      <Form.Group controlId="formBasicEmail">
+      <Form.Group
+        className="g-form-group-link"
+        controlId={`inputLink-${linkname}`}
+      >
         <Form.Label>Ссылка</Form.Label>
         <Form.Control
           type="url"

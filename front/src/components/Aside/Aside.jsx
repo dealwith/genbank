@@ -13,7 +13,7 @@ export const Aside = () => (
             <Link to="/">main</Link>
           </li>
           <li>
-            <Link to="/addSpecies">add species</Link>
+            <Link to="/add-species">add species</Link>
           </li>
         </ul>
       </nav>
