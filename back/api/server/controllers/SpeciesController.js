@@ -26,7 +26,6 @@ class SpeciesController {
   static async getMinSpecies(req, res) {
     try {
       const minSpicies = await SpeciesServices.getMinSpecies(); 
-
       if (minSpicies.length > 0) {
         util.setSuccess(200, 'Minimal visual species retrieved', minSpicies);
       } else {
@@ -42,19 +41,27 @@ class SpeciesController {
   }
 
   static async getTheSpecies(req, res) {
-    try {
-      const theSpecies = await SpeciesServices.getSpecies(req.params.speciesId);
 
-      if (theSpecies) {
-        util.setSuccess(200, 'Species retrieved', theSpecies);
+    const { speciesId: id } = req.params;
+
+    if (!Number(id)) {
+      util.setError(400, 'Please input a valid numeric value');
+      return util.send(res)
+    }
+
+    try {
+      const theSpecies = await SpeciesServices.getSpecies(id);
+
+      if (!theSpecies) {
+        util.setSuccess(404, `Cannot find the species with the id ${id}`);
       } else {
-        util.setSuccess(200, 'Dont found sush species')
+        util.setSuccess(200, 'Found species', theSpecies)
       }
 
       return util.send(res);
 
     } catch (error) {
-      util.setError(400, error);
+      util.setError(404, error);
       util.send(res);
     }
   }

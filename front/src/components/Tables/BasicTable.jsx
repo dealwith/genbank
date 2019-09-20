@@ -13,6 +13,7 @@ export const BasicTable = () => {
     const fetchData = async () => {
       const result = await axios.get(SPECIES_MIN);
       setData(result.data.data);
+      console.log(result.data.data);
     };
 
     fetchData();
