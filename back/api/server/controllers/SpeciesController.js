@@ -1,6 +1,5 @@
 import SpeciesServices from '../services/SpeciesServices';
 import Util from '../utils/Utils';
-import { url } from 'inspector';
 
 const util = new Util();
 
