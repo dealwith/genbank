@@ -1,4 +1,4 @@
-import database, { sequelize } from '../src/models';
+import database from '../src/models';
 
 class SpeciesServices {
   static async getAllSpecies() {
@@ -65,6 +65,7 @@ class SpeciesServices {
         });
         return deletedGen
       }
+      
       return null;
     } catch (error) {
       throw error;
