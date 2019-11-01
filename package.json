@@ -8,7 +8,7 @@
   "scripts": {
     "start": "concurrently \"yarn run front\" \"yarn run back\"",
     "front": "cd front && yarn start" ,
-    "back": "cd back/ && yarn start"
+    "back": "cd back && yarn start"
   },
   "dependencies": {
     "concurrently": "^5.0.0"

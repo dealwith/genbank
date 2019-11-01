@@ -2,6 +2,7 @@
 @import "variables";
 @import "aside";
 @import "nav";
+@import "header";
 
 .g-container {
   max-width: 1400px;
@@ -18,27 +19,6 @@
   padding: 30px 15px 15px;
 }
 
-.g-header {
-  background-color: #27242a;
-  height: var(--header-height);
-  padding: 10px 0 10px;
-  width: calc(100% - var(--aside-width));
-  position: fixed;
-  top: 0;
-  right: 0;
-  z-index: 1;
-}
-
 .g-form-group-link {
   margin-left: 1rem;
-}
-
-.g-text {
-  &-logo {
-    color: white;
-    margin: 0;
-  }
-  &-invert {
-    color: white;
-  }
 }

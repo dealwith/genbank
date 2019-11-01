@@ -1,6 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
 import "regenerator-runtime/runtime";
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Route,
+  Redirect,
+  Switch
+} from "react-router-dom";
+import { connect } from "react-redux";
+import { Alert } from "react-bootstrap";
 
 import { Header } from "../Header";
 import { Main } from "../Main";
@@ -9,16 +16,50 @@ import { AddSpeciesForm } from "../Form";
 import { BasicTable } from "../Tables";
 import ExactSpeciesTable from "../Tables/ExactSpeciesTable";
 
-export const App = () => {
+import { alertActions } from "../../actions";
+import { history } from "../../helpers";
+
+const App = props => {
+  const { alert } = props;
+  history.listen((location, action) => {
+    props.clearAlerts();
+  });
+
   return (
-    <Router>
+    <Router history={history}>
       <Aside />
       <Main>
         <Header />
-        <Route path="/" exact component={BasicTable} />
-        <Route path="/species/:speciesId" component={ExactSpeciesTable} />
-        <Route path="/add-species" component={AddSpeciesForm} />
+        <Alert variant="danger" onClose={() => setShow(false)} dismissible>
+          <Alert.Heading>Oh snap! You got an error!</Alert.Heading>
+          {alert.message && (
+            <div className={`alert ${alert.type}`}>{alert.message}</div>
+          )}
+        </Alert>
+        <Switch>
+          <Route path="/" exact component={BasicTable} />
+          <Route path="/species/:speciesId" component={ExactSpeciesTable} />
+          <Route path="/add-species" component={AddSpeciesForm} />
+          {/* <Route path='/login' component={Login} />
+          <Route path='/register' component={Registrate} /> */}
+          <Redirect from="*" to="/" />
+        </Switch>
       </Main>
     </Router>
   );
 };
+
+function mapState(state) {
+  const { alert } = state;
+  return { alert };
+}
+
+const actionCreators = {
+  clearAlerts: alertActions.clear
+};
+
+const connectedApp = connect(
+  mapState,
+  actionCreators
+)(App);
+export { connectedApp as App };

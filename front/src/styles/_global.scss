@@ -17,3 +17,13 @@ ul,
 li {
   list-style: none;
 }
+
+.g-text {
+  &-logo {
+    color: white;
+    margin: 0;
+  }
+  &-invert {
+    color: white;
+  }
+}
