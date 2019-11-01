@@ -1,9 +1,9 @@
-import React from "react";
+import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { Form, Button } from "react-bootstrap";
 import { connect } from "react-redux";
 
-class Registrate extends Component {
+export class Registrate extends Component {
   constructor(props) {
     super(props);
     this.state = {
