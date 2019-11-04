@@ -1,0 +1,13 @@
+.g-form {
+  &_center {
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+  }
+  &_small {
+    max-width: 360px;
+  }
+  &__title {
+    margin-bottom: 35px;
+  }
+}

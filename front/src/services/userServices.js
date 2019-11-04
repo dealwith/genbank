@@ -1,7 +1,7 @@
 import { API_URL } from "../constants";
 import { authHeader } from "../helpers";
 
-export const userService = {
+export const userServices = {
   login,
   logout,
   register,

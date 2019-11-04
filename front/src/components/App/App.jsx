@@ -1,11 +1,6 @@
 import React, { useState } from "react";
 import "regenerator-runtime/runtime";
-import {
-  BrowserRouter as Router,
-  Route,
-  Redirect,
-  Switch
-} from "react-router-dom";
+import { Router, Route, Redirect, Switch } from "react-router-dom";
 import { connect } from "react-redux";
 import { Alert } from "react-bootstrap";
 
@@ -44,7 +39,7 @@ const App = props => {
           <Route path="/species/:speciesId" component={ExactSpeciesTable} />
           <Route path="/add-species" component={AddSpeciesForm} />
           <Route path="/login" component={Login} />
-          <Route path="/register" component={Registrate} />
+          <Route path="/registrate" component={Registrate} />
           <Redirect from="*" to="/" />
         </Switch>
       </Main>
