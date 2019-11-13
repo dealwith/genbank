@@ -40,9 +40,9 @@ class Registrate extends Component {
 
     const { user } = this.state;
 
-    if (user.password !== this.state.repeatPassword) {
-      return false;
-    }
+    // if (user.password !== this.state.repeatPassword) {
+    //   return false;
+    // }
 
     if (user.name && user.email && user.password) {
       this.props.register(user);
@@ -134,17 +134,17 @@ class Registrate extends Component {
   }
 }
 
-function mapState(state) {
+function mapStateToProps(state) {
   const { registering } = state.registration;
   return { registering };
 }
 
-const actionCreators = {
+const mapDispatchToProps = {
   register: userActions.register
 };
 
 const connectedRegisterPage = connect(
-  mapState,
-  actionCreators
+  mapStateToProps,
+  mapDispatchToProps
 )(Registrate);
 export { connectedRegisterPage as Registrate };

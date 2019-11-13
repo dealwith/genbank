@@ -1,35 +1,37 @@
-import { Router } from 'express';
+import { Router } from "express";
 
-import isAuth from '../middlewares/isAuth';
-import attachCurrentUser from '../middlewares/attachCurrentUser';
-import roleRequired from '../middlewares/roleRequired';
-import database from '../src/models';
+import { path } from "../constants/paths";
+import isAuth from "../middlewares/isAuth";
+import attachCurrentUser from "../middlewares/attachCurrentUser";
+import roleRequired from "../middlewares/roleRequired";
+import database from "../src/models";
+import AuthController from "../controllers/AuthController";
 
 const authRouter = Router();
 
+authRouter.post(`${path.SIGN_UP}`, AuthController.signUp);
 
-authRouter.post('/auth/signin-as-user',
-  isAuth,
-  attachCurrentUser,
-  roleRequired('super-admin'),
-  (req, res) => {
-    const userEmail = req.body.email;
+// authRouter.post(`${path.SIGN_IN}`,
 
-    const userRecord = await UserModel.findOne({ email: userEmail });
+//   isAuth,
+//   attachCurrentUser,
+//   roleRequired('super-admin'),
+//   async (req, res) => {
+//     const userEmail = req.body.email;
+//  const userRecord = await database.User.findOne({ email: userEmail });
 
-    if (!userRecord) {
-      return res.status(404).send('User not found');
-    }
+//     if (!userRecord) {
+//       return res.status(404).send('User not found');
+//     }
 
-    return res.json({
-      user: {
-        email: userRecord.email,
-        name: userRecord.name
-      },
-      jwt: this.generateToken(userRecord)
-    })
-      .status(200);
-  })
+//     return res.json({
+//       user: {
+//         email: userRecord.email,
+//         name: userRecord.name
+//       },
+//       jwt: this.generateToken(userRecord)
+//     })
+//       .status(200);
+//   })
 
-
-export default authRouter 
+export default authRouter;

@@ -4,7 +4,7 @@ import { Row, Col } from "react-bootstrap";
 
 import { SPECIES_API, SPECIES_EXACT } from "../../constants/path";
 
-const ExactSpeciesTable = ({ match }) => {
+export const ExactSpeciesTable = ({ match }) => {
   const { params } = match;
   const [species, setSpecies] = useState({});
 
@@ -238,5 +238,3 @@ const ExactSpeciesTable = ({ match }) => {
     </Row>
   );
 };
-
-export default ExactSpeciesTable;

@@ -9,7 +9,7 @@ import { Main } from "../Main";
 import { Aside } from "../Aside";
 import { AddSpeciesForm } from "../Form";
 import { BasicTable } from "../Tables";
-import ExactSpeciesTable from "../Tables/ExactSpeciesTable";
+import { ExactSpeciesTable } from "../Tables";
 import { Login } from "../Auth";
 import { Registrate } from "../Auth";
 import { alertActions } from "../../actions";

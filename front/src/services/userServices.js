@@ -1,4 +1,4 @@
-import { API_URL } from "../constants";
+import { SIGN_IN, SIGN_UP } from "../constants";
 import { authHeader } from "../helpers";
 
 export const userServices = {
@@ -18,7 +18,7 @@ function login(username, password) {
     body: JSON.stringify({ username, password })
   };
 
-  return fetch(`${API_URL}/users/authenticate`, requestOptions)
+  return fetch(`${SIGN_IN}`, requestOptions)
     .then(handleResponse)
     .then(user => {
       // store user details and jwt token in local storage to keep user logged in between page refreshes
@@ -26,6 +26,16 @@ function login(username, password) {
 
       return user;
     });
+}
+
+function register(user) {
+  const requestOptions = {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(user)
+  };
+
+  return fetch(`${SIGN_UP}`, requestOptions).then(handleResponse);
 }
 
 function logout() {
@@ -49,18 +59,6 @@ function getById(id) {
   };
 
   return fetch(`${API_URL}/users/${id}`, requestOptions).then(handleResponse);
-}
-
-function register(user) {
-  const requestOptions = {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(user)
-  };
-
-  return fetch(`${API_URL}/users/register`, requestOptions).then(
-    handleResponse
-  );
 }
 
 function update(user) {
