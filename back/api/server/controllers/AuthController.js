@@ -18,6 +18,6 @@ export default class AuthController {
     }
   }
 
-  static async SignIn(req, res) {
-  }
+  // static async SignIn(req, res) {
+  // }
 }
