@@ -1,4 +1,4 @@
-export const API = `http://localhost:8000`;
+export const API = `http://localhost:8000/api/v1`;
 export const SPECIES_API = `${API}/species`;
 export const AUTH_API = `${API}/auth`;
 export const SIGN_IN = `${AUTH_API}/sign-in`;

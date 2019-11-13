@@ -148,6 +148,8 @@ export class AddSpeciesForm extends Component {
       species_identification_result_matk
     };
 
+    console.log(req);
+
     axios.post(SPECIES_API, req).catch(err => console.error(err));
   };
 
