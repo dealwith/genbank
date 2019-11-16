@@ -21,7 +21,7 @@ function login(email, password) {
         history.push("/");
       },
       error => {
-        dispatch(failure(error.toString));
+        dispatch(failure(error.toString()));
         dispatch(alertActions.error(error.toString()));
       }
     );

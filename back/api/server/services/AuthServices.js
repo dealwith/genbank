@@ -1,5 +1,6 @@
 import * as argon2 from "argon2";
 import database from "../src/models";
+import jwt from "jsonwebtoken";
 
 class AuthService {
   static async signUp({ email, name, password }) {
@@ -25,7 +26,6 @@ class AuthService {
 
   static async signIn(email, password) {
     const userRecord = await database.User.findOne({ where: { email } });
-
     if (!userRecord) {
       throw new Error("User not found");
     } else {
@@ -40,21 +40,21 @@ class AuthService {
 
     return {
       user: {
-        email: userRecord.email,
-        name: userRecord.name
+        name: userRecord.name,
+        email: userRecord.email
       },
       token: this._generateToken(userRecord)
     };
   }
 
-  _generateToken(user) {
+  static _generateToken(user) {
     const data = {
       id: user.id,
       name: user.name,
       email: user.email
     };
 
-    const signature = process.env.SIGNATURE;
+    const signature = "THATS_AN_I3REAM";
     const expiration = "6h";
 
     return jwt.sign({ data }, signature, { expiresIn: expiration });

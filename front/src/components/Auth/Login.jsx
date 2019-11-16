@@ -4,7 +4,6 @@ import { connect } from "react-redux";
 import { Form, Button } from "react-bootstrap";
 
 import { Input } from "../Inputs";
-
 import { userActions } from "../../actions";
 
 class Login extends Component {

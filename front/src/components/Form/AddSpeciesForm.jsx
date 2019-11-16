@@ -200,7 +200,7 @@ export class AddSpeciesForm extends Component {
     const { handleInputChange, handleSubmit } = this;
 
     return (
-      <Form onSubmit={handleSubmit}>
+      <Form onSubmit={handleSubmit} className="g-form g-form_add-species">
         <InputLink
           name="name"
           linkname="name_link"

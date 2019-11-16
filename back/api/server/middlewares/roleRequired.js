@@ -7,7 +7,7 @@ export default (requiredRole) => {
     if (req.currentUser.role === requiredRole) {
       return next();
     } else {
-      util.setError(401, 'Action nit allowed')
+      util.setError(401, 'Action not allowed')
       return util.send(res)
     }
   }
