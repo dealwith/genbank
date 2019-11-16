@@ -44,8 +44,6 @@ class Registrate extends Component {
     //   return false;
     // }
 
-    console.log(user);
-
     if (user.name && user.email && user.password) {
       this.props.register(user);
     }
