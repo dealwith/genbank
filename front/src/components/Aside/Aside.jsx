@@ -10,6 +10,9 @@ export const Aside = () => (
       <nav className="g-nav g-nav-admin">
         <ul className="g-text-invert">
           <li>
+            <Link to="/users">users</Link>
+          </li>
+          <li>
             <Link to="/">main</Link>
           </li>
           <li>

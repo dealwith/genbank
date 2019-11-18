@@ -28,12 +28,9 @@ const App = props => {
       <Aside />
       <Main>
         <Header />
-        <Alert variant="danger" onClose={() => setShow(false)} dismissible>
-          <Alert.Heading>Oh snap! You got an error!</Alert.Heading>
-          {alert.message && (
-            <div className={`alert ${alert.type}`}>{alert.message}</div>
-          )}
-        </Alert>
+        {alert.message && (
+          <div className={`alert ${alert.type}`}>{alert.message}</div>
+        )}
         <Switch>
           <Route path="/" exact component={BasicTable} />
           <Route path="/species/:speciesId" component={ExactSpeciesTable} />
