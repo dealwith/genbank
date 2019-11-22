@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import "regenerator-runtime/runtime";
 import { Router, Route, Redirect, Switch } from "react-router-dom";
 import { connect } from "react-redux";
-import { Alert } from "react-bootstrap";
 
 import { Header } from "../Header";
 import { Main } from "../Main";
@@ -12,6 +11,9 @@ import { BasicTable } from "../Tables";
 import { ExactSpeciesTable } from "../Tables";
 import { Login } from "../Auth";
 import { Registrate } from "../Auth";
+import { Footer } from "../Footer";
+import { Users } from "../Users";
+
 import { alertActions } from "../../actions";
 import { history } from "../../helpers";
 
@@ -37,8 +39,10 @@ const App = props => {
           <Route path="/add-species" component={AddSpeciesForm} />
           <Route path="/login" component={Login} />
           <Route path="/registrate" component={Registrate} />
+          <Route path="/users" component={Users} />
           <Redirect from="*" to="/" />
         </Switch>
+        <Footer />
       </Main>
     </Router>
   );

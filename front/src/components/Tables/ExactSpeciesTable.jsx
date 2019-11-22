@@ -60,7 +60,7 @@ export const ExactSpeciesTable = ({ match }) => {
   } = species;
 
   return (
-    <Row>
+    <>
       <Col>
         <Row>Описание образца</Row>
         <hr />
@@ -235,6 +235,6 @@ export const ExactSpeciesTable = ({ match }) => {
           {species_identification_result_matk}
         </Row>
       </Col>
-    </Row>
+    </>
   );
 };
