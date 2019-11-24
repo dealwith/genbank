@@ -9,8 +9,12 @@
   --header-height: 70px;
 }
 
+html,
+body,
 #root {
   position: relative;
+  height: 100%;
+  background-color: #f0f3f5;
 }
 
 ul,

@@ -1,7 +1,7 @@
 'use strict';
-module.exports = (sequelize, DataTypes) => {
+export default (sequelize, DataTypes) => {
   const Species = sequelize.define('Species', {
-    name: {type:DataTypes.STRING, field: "name"},
+    name: DataTypes.STRING ,
     name_link: DataTypes.STRING,
     guard_category: DataTypes.STRING,
     sample_number: DataTypes.STRING,
@@ -42,7 +42,7 @@ module.exports = (sequelize, DataTypes) => {
     ncbi_code_matk_link: DataTypes.STRING,
     species_identification_result_matk: DataTypes.STRING,
   }, {});
-  Species.associate = function(models) {
+  Species.associate = function (models) {
     // associations can be defined here
   };
   return Species;

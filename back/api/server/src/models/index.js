@@ -26,7 +26,7 @@ fs
     const model = sequelize['import'](path.join(__dirname, file));
 
     if (uniqueObj[model.name]) {
-      throw `Current modelName already exists: ${model.name}`;
+      throw `Current model name already exists: ${model.name}`;
     }
 
     db[model.name] = model;

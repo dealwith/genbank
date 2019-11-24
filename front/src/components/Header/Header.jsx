@@ -11,11 +11,9 @@ const Header = ({ user = "" }) => {
           <span className="mr-sm-2">
             {user ? `Hello ${user.name}` : `Hello guest`}
           </span>
-          <Button>
-            <Link to="/login" className="g-text-invert">
-              {user.name ? "Logout" : "Login"}
-            </Link>
-          </Button>
+          <Link to="/login" className="g-text-invert">
+            <Button>{user.name ? "Logout" : "Login"}</Button>
+          </Link>
         </div>
       </nav>
     </header>
