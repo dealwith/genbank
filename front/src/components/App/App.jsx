@@ -28,8 +28,8 @@ const App = props => {
   return (
     <Router history={history}>
       <Aside />
+      <Header />
       <Main>
-        <Header />
         {alert.message && (
           <div className={`alert ${alert.type}`}>{alert.message}</div>
         )}

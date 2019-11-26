@@ -4,7 +4,6 @@ export default (sequelize, DataTypes) => {
     name: DataTypes.STRING,
     email: DataTypes.STRING,
     password: DataTypes.STRING,
-    roleId: DataTypes.INTEGER,
     verificated: DataTypes.BOOLEAN
   }, {});
   User.associate = function(models) {

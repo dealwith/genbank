@@ -14,8 +14,15 @@ module.exports = {
       name_link: {
         type: Sequelize.STRING
       },
-      guard_category: {
-        type: Sequelize.STRING
+      guardCategoryId: {
+        type: Sequelize.INTEGER,
+        references: {
+          model: {
+            tableName: 'GuardCategory'
+          },
+          key: 'id'
+        },
+        allowNull: false
       },
       sample_number: {
         type: Sequelize.STRING
@@ -26,7 +33,10 @@ module.exports = {
       bank_code_link: {
         type: Sequelize.STRING
       },
-      year_gathering_place: {
+      year: {
+        type: Sequelize.INTEGER
+      },
+      gathering_place: {
         type: Sequelize.STRING
       },
       year_gathering_place_link: {

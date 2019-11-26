@@ -20,6 +20,11 @@ module.exports = {
     return queryInterface.removeColumn(
       'Users',
       'roleId'
-    );
+    ).then(() => {
+      return queryInterface.removeColumn(
+        'Species',
+        'guardCategoryId'
+      );
+    });
   }
 };

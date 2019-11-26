@@ -1,13 +1,15 @@
 'use strict';
+
 export default (sequelize, DataTypes) => {
   const Species = sequelize.define('Species', {
-    name: DataTypes.STRING ,
+    name: DataTypes.STRING,
     name_link: DataTypes.STRING,
     guard_category: DataTypes.STRING,
     sample_number: DataTypes.STRING,
     bank_code: DataTypes.STRING,
     bank_code_link: DataTypes.STRING,
-    year_gathering_place: DataTypes.STRING,
+    year: DataTypes.NUMBER,
+    gathering_place: DataTypes.STRING,
     year_gathering_place_link: DataTypes.STRING,
     sequence__itst2: DataTypes.STRING,
     sequence_itst2_link: DataTypes.STRING,
@@ -43,8 +45,6 @@ export default (sequelize, DataTypes) => {
     species_identification_result_matk: DataTypes.STRING,
   }, {});
   Species.associate = function (models) {
-    // associations can be defined here
   };
   return Species;
 };
-

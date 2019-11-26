@@ -8,8 +8,8 @@ export default (sequelize, DataTypes) => {
     },
     role: DataTypes.STRING
   }, {});
-  Role.associate = (models) => {
-    Role.belongsTo(models.User, {});
+  Role.associate = models => {
+    Role.hasOne(models.User);
   };
   return Role;
 };
