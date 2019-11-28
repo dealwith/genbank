@@ -8,7 +8,8 @@ export const Input = props => {
     labelName = name.substr(0, 1).toUpperCase() + name.slice(1),
     onChange,
     type = "text",
-    className = ""
+    className = "",
+    children
   } = props;
 
   return (
@@ -24,6 +25,7 @@ export const Input = props => {
           className={className}
         />
       </Form.Group>
+      {children}
     </Form.Row>
   );
 };

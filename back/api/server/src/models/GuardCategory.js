@@ -7,7 +7,10 @@ module.exports = (sequelize, DataTypes) => {
       autoIncrement: true,
       primaryKey: true
     },
-    abbreviation: DataTypes.STRING
+    abbreviation: {
+      type: DataTypes.STRING,
+      unique: true
+    }
   }, {});
   GuardCategory.associate = models => {
     GuardCategory.hasOne(models.Species);

@@ -2,7 +2,7 @@
 
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.bulkInsert('GuardCategories', [
+    return queryInterface.bulkInsert('GuardCategory', [
       {
         abbreviation: 'I (CR)',
         createdAt: new Date(),
@@ -38,7 +38,7 @@ module.exports = {
   },
 
   down: (queryInterface, Sequelize) => {
-    return queryInterface.bulkDelete('Guard_categories', null, {});
+    return queryInterface.bulkDelete('GuardCategory', null, {});
 
   }
 };

@@ -14,6 +14,16 @@ module.exports = {
       name_link: {
         type: Sequelize.STRING
       },
+      familyId: {
+        type: Sequelize.INTEGER,
+        references: {
+          model: {
+            tableName: 'Families'
+          },
+          key: 'id'
+        },
+        allowNull: false
+      },
       guardCategoryId: {
         type: Sequelize.INTEGER,
         references: {

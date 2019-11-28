@@ -15,6 +15,7 @@ export const Aside = () => (
           <li>
             <Link to="/">main</Link>
           </li>
+          <li>add family</li>
           <li>
             <Link to="/add-species">add species</Link>
           </li>

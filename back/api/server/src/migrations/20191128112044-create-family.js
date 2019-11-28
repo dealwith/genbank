@@ -1,14 +1,14 @@
 'use strict';
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable('GuardCategory', {
+    return queryInterface.createTable('Families', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      abbreviation: {
+      name: {
         type: Sequelize.STRING,
         unique: true
       },
@@ -23,6 +23,6 @@ module.exports = {
     });
   },
   down: (queryInterface, Sequelize) => {
-    return queryInterface.dropTable('GuardCategory');
+    return queryInterface.dropTable('Families');
   }
 };

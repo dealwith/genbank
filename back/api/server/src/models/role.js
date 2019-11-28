@@ -6,7 +6,10 @@ export default (sequelize, DataTypes) => {
       autoIncrement: true,
       primaryKey: true
     },
-    role: DataTypes.STRING
+    role: {
+      type: DataTypes.STRING,
+      unique: true
+    }
   }, {});
   Role.associate = models => {
     Role.hasOne(models.User);

@@ -11,6 +11,7 @@ export class AddSpeciesForm extends Component {
     this.state = {
       name: "",
       name_link: "",
+      family: "",
       guard_category: "",
       sample_number: "",
       bank_code: "",
@@ -62,9 +63,11 @@ export class AddSpeciesForm extends Component {
 
   handleSubmit = e => {
     e.preventDefault();
+
     const {
       name,
       name_link,
+      family,
       guard_category,
       sample_number,
       bank_code,
@@ -105,9 +108,10 @@ export class AddSpeciesForm extends Component {
       species_identification_result_matk
     } = this.state;
 
-    const req = {
+    const request = {
       name,
       name_link,
+      family,
       guard_category,
       sample_number,
       bank_code,
@@ -148,15 +152,16 @@ export class AddSpeciesForm extends Component {
       species_identification_result_matk
     };
 
-    console.log(req);
+    console.log(request);
 
-    axios.post(SPECIES_API, req).catch(err => console.error(err));
+    axios.post(SPECIES_API, request).catch(err => console.error(err));
   };
 
   render() {
     const {
       name,
       name_link,
+      family,
       guard_category,
       sample_number,
       bank_code,
@@ -209,6 +214,14 @@ export class AddSpeciesForm extends Component {
           linkValue={name_link}
           onChange={handleInputChange}
         />
+        <Input
+          name="family"
+          labelName="Семейство"
+          value={family}
+          onChange={handleInputChange}
+        >
+          <Button>add family</Button>
+        </Input>
         <Input
           name="guard_category"
           labelName="Категория охраны"
