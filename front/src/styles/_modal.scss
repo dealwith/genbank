@@ -1,0 +1,38 @@
+#modal-root {
+  z-index: 999;
+}
+
+%initial {
+  display: flex;
+  padding: 15px;
+}
+
+.g-modal {
+  background-color: #fff;
+  border-radius: 4px;
+  &_bg {
+    background-color: rgba(0, 0, 0, 0.5);
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  &__header {
+    @extend %initial;
+    justify-content: space-between;
+    margin-bottom: 15px;
+  }
+  &__body {
+    @extend %initial;
+  }
+  &__footer {
+    @extend %initial;
+    & > :not(:last-child) {
+      margin-right: 15px;
+    }
+  }
+}
