@@ -1,7 +1,7 @@
-import React, { PureComponent } from "react";
+import React, { PureComponent, Component } from "react";
 import { Form } from "react-bootstrap";
 
-export class Input extends PureComponent {
+export class Input extends Component {
   constructor(props) {
     super(props);
     this.state = {};

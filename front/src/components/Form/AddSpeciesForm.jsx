@@ -11,7 +11,7 @@ export class AddSpeciesForm extends Component {
   constructor(props) {
     super(props);
 
-    this.refInput = createRef();
+    this.textInput = createRef();
 
     this.state = {
       //species form control
@@ -63,10 +63,6 @@ export class AddSpeciesForm extends Component {
     };
   }
 
-  focusInput() {
-    this.refInput.current.focus();
-  }
-
   toggleModal = () => {
     this.setState(state => ({
       isModalOpen: !state.isModalOpen
@@ -87,7 +83,7 @@ export class AddSpeciesForm extends Component {
   handleFamilySubmit = e => {
     e.preventDefault();
 
-    const { addFamily } = this.state;
+    axios.post("", this.textInput.current.value).then(() => this.toggleModal());
   };
 
   //add species request
@@ -238,7 +234,12 @@ export class AddSpeciesForm extends Component {
     } = this.state;
 
     //class control methods
-    const { handleInputChange, handleSubmit, toggleModal, focusInput } = this;
+    const {
+      handleInputChange,
+      handleSubmit,
+      toggleModal,
+      handleFamilySubmit
+    } = this;
 
     const modal = isModalOpen ? (
       <Modal>
@@ -262,15 +263,29 @@ export class AddSpeciesForm extends Component {
                 </svg>
               </button>
             </div>
-            <Form method="POST" action="">
+            <Form method="POST" action="" onSubmit={handleFamilySubmit}>
               <div className="g-modal__body">
-                <Input
+                {/* <Input
                   name="add-family"
                   labelName="Название сеймейства"
                   value={addFamily}
                   onChange={handleInputChange}
-                  ref={focusInput}
-                />
+                  ref={this.textInput}
+                /> */}
+                <Form.Row>
+                  <Form.Group controlId={`input-${addFamily}`}>
+                    <Form.Label>Название сеймейства</Form.Label>
+                    <Form.Control
+                      type="text"
+                      placeholder="Название сеймейства"
+                      name="addFamily"
+                      value={value}
+                      onChange={onChange}
+                      className={className}
+                    />
+                  </Form.Group>
+                  {children}
+                </Form.Row>
               </div>
               <div className="g-modal__footer">
                 <Button onClick={toggleModal} variant="secondary">
