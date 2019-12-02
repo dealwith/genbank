@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, createRef } from "react";
 import { Form, Button } from "react-bootstrap";
 import axios from "axios";
 
@@ -10,6 +10,9 @@ import { SPECIES_API } from "../../constants/path";
 export class AddSpeciesForm extends Component {
   constructor(props) {
     super(props);
+
+    this.refInput = createRef();
+
     this.state = {
       //species form control
       name: "",
@@ -54,8 +57,14 @@ export class AddSpeciesForm extends Component {
       ncbi_code_matk_link: "",
       species_identification_result_matk: "",
       //modal control
-      isModalOpen: false
+      isModalOpen: false,
+      // addFamily control
+      addFamily: ""
     };
+  }
+
+  focusInput() {
+    this.refInput.current.focus();
   }
 
   toggleModal = () => {
@@ -63,9 +72,7 @@ export class AddSpeciesForm extends Component {
       isModalOpen: !state.isModalOpen
     }));
 
-    /* isModalOpen ? */ document.body.classList.toggle(
-      "overflow-hidden"
-    ) /*  : document.body.classList.add('overflow-auto') */;
+    document.body.classList.toggle("overflow-hidden");
   };
 
   handleInputChange = (e, linkname) => {
@@ -74,6 +81,13 @@ export class AddSpeciesForm extends Component {
     this.setState({
       [name]: value
     });
+  };
+
+  // add family
+  handleFamilySubmit = e => {
+    e.preventDefault();
+
+    const { addFamily } = this.state;
   };
 
   //add species request
@@ -217,11 +231,14 @@ export class AddSpeciesForm extends Component {
       ncbi_code_matk,
       ncbi_code_matk_link,
       species_identification_result_matk,
-      isModalOpen
+      // modal
+      isModalOpen,
+      // add family
+      addFamily
     } = this.state;
 
     //class control methods
-    const { handleInputChange, handleSubmit, toggleModal } = this;
+    const { handleInputChange, handleSubmit, toggleModal, focusInput } = this;
 
     const modal = isModalOpen ? (
       <Modal>
@@ -236,32 +253,32 @@ export class AddSpeciesForm extends Component {
               <h5 className="modal-title">Add family</h5>
               <button type="button" aria-label="Close" onClick={toggleModal}>
                 <svg
-                  x="0px"
-                  y="0px"
-                  viewBox="0 0 47.971 47.971"
-                  style={{ width: 15 }}
+                  fill="#000000"
+                  viewBox="0 0 30 30"
+                  width="30px"
+                  height="30px"
                 >
-                  <g>
-                    <path
-                      d="M28.228,23.986L47.092,5.122c1.172-1.171,1.172-3.071,0-4.242c-1.172-1.172-3.07-1.172-4.242,0L23.986,19.744L5.121,0.88
-                      c-1.172-1.172-3.07-1.172-4.242,0c-1.172,1.171-1.172,3.071,0,4.242l18.865,18.864L0.879,42.85c-1.172,1.171-1.172,3.071,0,4.242
-                      C1.465,47.677,2.233,47.97,3,47.97s1.535-0.293,2.121-0.879l18.865-18.864L42.85,47.091c0.586,0.586,1.354,0.879,2.121,0.879
-                      s1.535-0.293,2.121-0.879c1.172-1.171,1.172-3.071,0-4.242L28.228,23.986z"
-                    />
-                  </g>
+                  <path d="M 7 4 C 6.744125 4 6.4879687 4.0974687 6.2929688 4.2929688 L 4.2929688 6.2929688 C 3.9019687 6.6839688 3.9019687 7.3170313 4.2929688 7.7070312 L 11.585938 15 L 4.2929688 22.292969 C 3.9019687 22.683969 3.9019687 23.317031 4.2929688 23.707031 L 6.2929688 25.707031 C 6.6839688 26.098031 7.3170313 26.098031 7.7070312 25.707031 L 15 18.414062 L 22.292969 25.707031 C 22.682969 26.098031 23.317031 26.098031 23.707031 25.707031 L 25.707031 23.707031 C 26.098031 23.316031 26.098031 22.682969 25.707031 22.292969 L 18.414062 15 L 25.707031 7.7070312 C 26.098031 7.3170312 26.098031 6.6829688 25.707031 6.2929688 L 23.707031 4.2929688 C 23.316031 3.9019687 22.682969 3.9019687 22.292969 4.2929688 L 15 11.585938 L 7.7070312 4.2929688 C 7.5115312 4.0974687 7.255875 4 7 4 z" />
                 </svg>
               </button>
             </div>
-
-            <div className="g-modal__body">
-              <Form>
-                <Input name="l"></Input>
-              </Form>
-            </div>
-            <div className="g-modal__footer">
-              <Button variant="secondary">Close</Button>
-              <Button variant="primary">Save changes</Button>
-            </div>
+            <Form method="POST" action="">
+              <div className="g-modal__body">
+                <Input
+                  name="add-family"
+                  labelName="Название сеймейства"
+                  value={addFamily}
+                  onChange={handleInputChange}
+                  ref={focusInput}
+                />
+              </div>
+              <div className="g-modal__footer">
+                <Button onClick={toggleModal} variant="secondary">
+                  Close
+                </Button>
+                <Button variant="primary">Add family</Button>
+              </div>
+            </Form>
           </div>
         </div>
       </Modal>
@@ -289,7 +306,11 @@ export class AddSpeciesForm extends Component {
             value={family}
             onChange={handleInputChange}
           >
-            <Button type="button" onClick={toggleModal}>
+            <Button
+              className="align-self-end"
+              type="button"
+              onClick={toggleModal}
+            >
               add family
             </Button>
           </Input>

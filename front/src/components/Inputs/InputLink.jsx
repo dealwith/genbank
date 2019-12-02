@@ -18,7 +18,7 @@ export const InputLink = props => {
 
   return (
     <Form.Row>
-      <Form.Group controlId={`input-${labelName}`}>
+      <Form.Group controlId={`input-${name}`}>
         <Form.Label>{labelName}</Form.Label>
         <Form.Control
           type={type}
