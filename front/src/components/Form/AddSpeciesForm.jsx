@@ -8,67 +8,53 @@ import { InputLink, Input } from "../Inputs";
 import { SPECIES_API } from "../../constants/path";
 
 export class AddSpeciesForm extends Component {
-  constructor(props) {
-    super(props);
-
-    this.textInput = createRef();
-
-    this.state = {
-      //species form control
-      name: "",
-      name_link: "",
-      family: "",
-      guard_category: "",
-      sample_number: "",
-      bank_code: "",
-      bank_code_link: "",
-      year_gathering_place: "",
-      year_gathering_place_link: "",
-      sequence__itst2: "",
-      sequence_itst2_link: "",
-      sequence_length_itst2: 0,
-      coverage_percent_itst2: 0,
-      ncbi_identity_itst2: 0,
-      ncbi_code_itst2: "",
-      ncbi_code_itst2_link: "",
-      species_identification_result_itst2: "",
-      sequence_rbcl: "",
-      sequence_rbcl_link: "",
-      sequence_length_rbcl: 0,
-      coverage_percent_rbcl: 0,
-      ncbi_identity_rbcl: 0,
-      ncbi_code_rbcl: "",
-      ncbi_code_rbcl_link: "",
-      species_identification_result_rbcl: "",
-      sequence_psb: "",
-      sequence_psb_link: "",
-      sequence_length_psb: 0,
-      coverage_percent_psb: 0,
-      ncbi_identity_psb: 0,
-      ncbi_code_psb: "",
-      ncbi_code_psb_link: "",
-      species_identification_result_psb: "",
-      sequence_matk: "",
-      sequence_matk_link: "",
-      sequence_length_matk: 0,
-      coverag_percent_matk: 0,
-      ncbi_identity_matk: 0,
-      ncbi_code_matk: "",
-      ncbi_code_matk_link: "",
-      species_identification_result_matk: "",
-      //modal control
-      isModalOpen: false,
-      // addFamily control
-      addFamily: ""
-    };
-  }
-
-  toggleModal = () => {
-    this.setState(state => ({
-      isModalOpen: !state.isModalOpen
-    }));
-
-    document.body.classList.toggle("overflow-hidden");
+  state = {
+    //species form control
+    name: "",
+    name_link: "",
+    family: "",
+    guard_category: "",
+    sample_number: "",
+    bank_code: "",
+    bank_code_link: "",
+    year_gathering_place: "",
+    year_gathering_place_link: "",
+    sequence__itst2: "",
+    sequence_itst2_link: "",
+    sequence_length_itst2: 0,
+    coverage_percent_itst2: 0,
+    ncbi_identity_itst2: 0,
+    ncbi_code_itst2: "",
+    ncbi_code_itst2_link: "",
+    species_identification_result_itst2: "",
+    sequence_rbcl: "",
+    sequence_rbcl_link: "",
+    sequence_length_rbcl: 0,
+    coverage_percent_rbcl: 0,
+    ncbi_identity_rbcl: 0,
+    ncbi_code_rbcl: "",
+    ncbi_code_rbcl_link: "",
+    species_identification_result_rbcl: "",
+    sequence_psb: "",
+    sequence_psb_link: "",
+    sequence_length_psb: 0,
+    coverage_percent_psb: 0,
+    ncbi_identity_psb: 0,
+    ncbi_code_psb: "",
+    ncbi_code_psb_link: "",
+    species_identification_result_psb: "",
+    sequence_matk: "",
+    sequence_matk_link: "",
+    sequence_length_matk: 0,
+    coverag_percent_matk: 0,
+    ncbi_identity_matk: 0,
+    ncbi_code_matk: "",
+    ncbi_code_matk_link: "",
+    species_identification_result_matk: "",
+    //modal control
+    isModalOpen: false,
+    // addFamily control
+    addFamily: ""
   };
 
   handleInputChange = (e, linkname) => {
@@ -77,13 +63,6 @@ export class AddSpeciesForm extends Component {
     this.setState({
       [name]: value
     });
-  };
-
-  // add family
-  handleFamilySubmit = e => {
-    e.preventDefault();
-
-    axios.post("", this.textInput.current.value).then(() => this.toggleModal());
   };
 
   //add species request
@@ -226,82 +205,37 @@ export class AddSpeciesForm extends Component {
       ncbi_identity_matk,
       ncbi_code_matk,
       ncbi_code_matk_link,
-      species_identification_result_matk,
-      // modal
-      isModalOpen,
-      // add family
-      addFamily
+      species_identification_result_matk
     } = this.state;
 
     //class control methods
-    const {
-      handleInputChange,
-      handleSubmit,
-      toggleModal,
-      handleFamilySubmit
-    } = this;
+    const { handleInputChange, handleSubmit, toggleModal } = this;
 
-    const modal = isModalOpen ? (
-      <Modal>
-        <div
-          tabIndex="-1"
-          role="dialog"
-          aria-hidden="true"
-          className="g-modal_bg"
-        >
-          <div className="g-modal">
-            <div className="g-modal__header">
-              <h5 className="modal-title">Add family</h5>
-              <button type="button" aria-label="Close" onClick={toggleModal}>
-                <svg
-                  fill="#000000"
-                  viewBox="0 0 30 30"
-                  width="30px"
-                  height="30px"
-                >
-                  <path d="M 7 4 C 6.744125 4 6.4879687 4.0974687 6.2929688 4.2929688 L 4.2929688 6.2929688 C 3.9019687 6.6839688 3.9019687 7.3170313 4.2929688 7.7070312 L 11.585938 15 L 4.2929688 22.292969 C 3.9019687 22.683969 3.9019687 23.317031 4.2929688 23.707031 L 6.2929688 25.707031 C 6.6839688 26.098031 7.3170313 26.098031 7.7070312 25.707031 L 15 18.414062 L 22.292969 25.707031 C 22.682969 26.098031 23.317031 26.098031 23.707031 25.707031 L 25.707031 23.707031 C 26.098031 23.316031 26.098031 22.682969 25.707031 22.292969 L 18.414062 15 L 25.707031 7.7070312 C 26.098031 7.3170312 26.098031 6.6829688 25.707031 6.2929688 L 23.707031 4.2929688 C 23.316031 3.9019687 22.682969 3.9019687 22.292969 4.2929688 L 15 11.585938 L 7.7070312 4.2929688 C 7.5115312 4.0974687 7.255875 4 7 4 z" />
-                </svg>
-              </button>
-            </div>
-            <Form method="POST" action="" onSubmit={handleFamilySubmit}>
-              <div className="g-modal__body">
-                {/* <Input
-                  name="add-family"
-                  labelName="Название сеймейства"
-                  value={addFamily}
-                  onChange={handleInputChange}
-                  ref={this.textInput}
-                /> */}
-                <Form.Row>
-                  <Form.Group controlId={`input-${addFamily}`}>
-                    <Form.Label>Название сеймейства</Form.Label>
-                    <Form.Control
-                      type="text"
-                      placeholder="Название сеймейства"
-                      name="addFamily"
-                      value={value}
-                      onChange={onChange}
-                      className={className}
-                    />
-                  </Form.Group>
-                  {children}
-                </Form.Row>
-              </div>
-              <div className="g-modal__footer">
-                <Button onClick={toggleModal} variant="secondary">
-                  Close
-                </Button>
-                <Button variant="primary">Add family</Button>
-              </div>
-            </Form>
-          </div>
-        </div>
-      </Modal>
-    ) : null;
+    const modalProps = {
+      ariaLabel: "A label describing the Modal current content",
+      triggerText: "This is a button to trigger the Modal"
+    };
 
+    const modalContent = (
+      <div>
+        <p>
+          Hello world Lorem ipsum dolor sit amet, <a href="#1">first link</a>{" "}
+          consectetur adipiscing elit. Phasellus sagittis erat ut ex bibendum
+          consequat. Morbi luctus ex ex, at varius purus{" "}
+          <a href="#2">second link</a> vehicula consectetur. Curabitur a sapien
+          a augue consequat rhoncus. Suspendisse commodo ullamcorper nibh quis
+          blandit. Etiam viverra neque quis mauris efficitur, lobortis aliquam
+          ex pharetra. Nam et ante ex. Sed gravida gravida ligula, non blandit
+          nunc. Orci varius natoque penatibus et magnis dis parturient montes,
+          nascetur ridiculus mus. Integer consectetur efficitur tempor. Nunc
+          sollicitudin felis congue facilisis faucibus. Mauris faucibus sit amet
+          ante eleifend dapibus.
+        </p>
+      </div>
+    );
     return (
       <>
-        {modal}
+        <Modal {...modalProps}>{modalContent}</Modal>
         <Form
           onSubmit={handleSubmit}
           className="g-form g-form_add-species"
