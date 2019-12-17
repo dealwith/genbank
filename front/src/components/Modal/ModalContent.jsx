@@ -40,6 +40,6 @@ export const ModalContent = forwardRef((props, ref) => {
         <div className="g-modal__body">{content}</div>
       </div>
     </section>,
-    document.body
+    document.getElementById("modal-root")
   );
 });

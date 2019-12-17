@@ -51,8 +51,6 @@ export class AddSpeciesForm extends Component {
     ncbi_code_matk: "",
     ncbi_code_matk_link: "",
     species_identification_result_matk: "",
-    //modal control
-    isModalOpen: false,
     // addFamily control
     addFamily: ""
   };
@@ -162,6 +160,12 @@ export class AddSpeciesForm extends Component {
     axios.post(SPECIES_API, request).catch(err => console.error(err));
   };
 
+  handleFamilySubmit = e => {
+    e.preventDefault();
+    e.stopPropagation();
+    console.log(this.state.addFamily);
+  };
+
   render() {
     //destructure state values
     const {
@@ -205,37 +209,35 @@ export class AddSpeciesForm extends Component {
       ncbi_identity_matk,
       ncbi_code_matk,
       ncbi_code_matk_link,
-      species_identification_result_matk
+      species_identification_result_matk,
+      //add family modal
+      addFamily
     } = this.state;
 
     //class control methods
-    const { handleInputChange, handleSubmit, toggleModal } = this;
+    const { handleInputChange, handleSubmit, handleFamilySubmit } = this;
 
     const modalProps = {
-      ariaLabel: "A label describing the Modal current content",
-      triggerText: "This is a button to trigger the Modal"
+      ariaLabel: "Добавить семейство",
+      triggerText: "Добавить семейство"
     };
 
     const modalContent = (
       <div>
-        <p>
-          Hello world Lorem ipsum dolor sit amet, <a href="#1">first link</a>{" "}
-          consectetur adipiscing elit. Phasellus sagittis erat ut ex bibendum
-          consequat. Morbi luctus ex ex, at varius purus{" "}
-          <a href="#2">second link</a> vehicula consectetur. Curabitur a sapien
-          a augue consequat rhoncus. Suspendisse commodo ullamcorper nibh quis
-          blandit. Etiam viverra neque quis mauris efficitur, lobortis aliquam
-          ex pharetra. Nam et ante ex. Sed gravida gravida ligula, non blandit
-          nunc. Orci varius natoque penatibus et magnis dis parturient montes,
-          nascetur ridiculus mus. Integer consectetur efficitur tempor. Nunc
-          sollicitudin felis congue facilisis faucibus. Mauris faucibus sit amet
-          ante eleifend dapibus.
-        </p>
+        <Form action="" method="POST" onSubmit={handleFamilySubmit}>
+          <Input
+            name="addFamily"
+            labelName="Название семейства"
+            onChange={handleInputChange}
+            value={addFamily}
+          />
+          <Button type="submit">Добавить</Button>
+        </Form>
       </div>
     );
+
     return (
       <>
-        <Modal {...modalProps}>{modalContent}</Modal>
         <Form
           onSubmit={handleSubmit}
           className="g-form g-form_add-species"
@@ -255,13 +257,7 @@ export class AddSpeciesForm extends Component {
             value={family}
             onChange={handleInputChange}
           >
-            <Button
-              className="align-self-end"
-              type="button"
-              onClick={toggleModal}
-            >
-              add family
-            </Button>
+            <Modal {...modalProps}>{modalContent}</Modal>
           </Input>
           <Input
             name="guard_category"
