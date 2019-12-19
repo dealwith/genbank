@@ -1,6 +1,5 @@
 import React, { PureComponent, Component } from "react";
 import { Form } from "react-bootstrap";
-import asdasd from "dad";
 
 export const Input = React.memo(props => {
   const {

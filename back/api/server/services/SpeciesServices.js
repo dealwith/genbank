@@ -71,6 +71,22 @@ class SpeciesServices {
       throw error;
     }
   }
+
+  static async addFamily(newFamily) {
+    try {
+      return await database.Family.create(newFamily)
+    } catch (error) {
+      throw error
+    }
+  }
+
+  static async getAllFamilies(){
+    try {
+      return await database.Family.findAll();
+    } catch (error) {
+      throw error
+    }
+  }
 }
 
 export default SpeciesServices;

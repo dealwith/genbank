@@ -1,14 +1,17 @@
-import React, { Component, createRef } from "react";
+import React, { Component, createContext } from "react";
 import { Form, Button } from "react-bootstrap";
 import axios from "axios";
 
 import { Modal } from "../Modal";
 
 import { InputLink, Input } from "../Inputs";
-import { SPECIES_API } from "../../constants/path";
+import { SPECIES_API, ADD_FAMILY, GET_FAMILIES } from "../../constants/path";
 
 export class AddSpeciesForm extends Component {
   state = {
+    // addFamily control
+    addFamily: "",
+    families: [],
     //species form control
     name: "",
     name_link: "",
@@ -50,9 +53,7 @@ export class AddSpeciesForm extends Component {
     ncbi_identity_matk: 0,
     ncbi_code_matk: "",
     ncbi_code_matk_link: "",
-    species_identification_result_matk: "",
-    // addFamily control
-    addFamily: ""
+    species_identification_result_matk: ""
   };
 
   handleInputChange = (e, linkname) => {
@@ -157,14 +158,37 @@ export class AddSpeciesForm extends Component {
 
     console.log(request);
 
-    axios.post(SPECIES_API, request).catch(err => console.error(err));
+    axios.post(SPECIES_API, request).catch(error => console.error(error));
+  };
+
+  getAllFamilies = () => {
+    axios
+      .get(GET_FAMILIES)
+      .then(response => {
+        this.setState({ families: response.data.data });
+      })
+      .catch(error => console.error(error));
   };
 
   handleFamilySubmit = e => {
     e.preventDefault();
     e.stopPropagation();
-    console.log(this.state.addFamily);
+
+    const { addFamily } = this.state;
+    const request = {
+      name: addFamily
+    };
+
+    axios
+      .post(ADD_FAMILY, request)
+      .then(() => this.getAllFamilies())
+      .then(() => this.setState({ family: request.name }))
+      .catch(error => console.error(error));
   };
+
+  componentDidMount() {
+    this.getAllFamilies();
+  }
 
   render() {
     //destructure state values
@@ -172,6 +196,7 @@ export class AddSpeciesForm extends Component {
       name,
       name_link,
       family,
+      families,
       guard_category,
       sample_number,
       bank_code,
@@ -215,7 +240,7 @@ export class AddSpeciesForm extends Component {
     } = this.state;
 
     //class control methods
-    const { handleInputChange, handleSubmit, handleFamilySubmit } = this;
+    const { handleSubmit, handleFamilySubmit, handleInputChange } = this;
 
     const modalProps = {
       ariaLabel: "Добавить семейство",
@@ -251,20 +276,45 @@ export class AddSpeciesForm extends Component {
             linkValue={name_link}
             onChange={handleInputChange}
           />
-          <Input
-            name="family"
-            labelName="Семейство"
-            value={family}
-            onChange={handleInputChange}
-          >
+          <Form.Group controlId="input-family">
+            <Form.Label>Семейства</Form.Label>
+            <Form.Control
+              name="family"
+              value={family}
+              onChange={handleInputChange}
+              size="sm"
+              as="select"
+            >
+              {families.map(item => (
+                <option value={item.name} key={item.id}>
+                  {item.name}
+                </option>
+              ))}
+            </Form.Control>
             <Modal {...modalProps}>{modalContent}</Modal>
-          </Input>
+          </Form.Group>
           <Input
             name="guard_category"
             labelName="Категория охраны"
             value={guard_category}
             onChange={handleInputChange}
           />
+          {/* <Form.Group controlId="input-family">
+            <Form.Label>Категория охраны</Form.Label>
+            <Form.Control
+              name="guard_category"
+              value={guard_category}
+              onChange={handleInputChange}
+              size="sm"
+              as="select"
+            >
+              {families.map(item => (
+                <option value={item.name} key={item.id}>
+                  {item.name}
+                </option>
+              ))}
+            </Form.Control>
+          </Form.Group> */}
           <Input
             name="sample_number"
             labelName="№ п/п образца"
