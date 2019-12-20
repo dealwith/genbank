@@ -372,7 +372,7 @@ export class AddSpeciesForm extends Component {
           <InputLink
             labelName="Код последовательности в NCBI"
             name="ncbi_code_itst2"
-            linkname="NcbiCodeITS2_link"
+            linkname="ncbi_code_itst2_link"
             value={ncbi_code_itst2}
             linkValue={ncbi_code_itst2_link}
             onChange={handleInputChange}
