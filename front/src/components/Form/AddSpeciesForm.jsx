@@ -1,6 +1,7 @@
 import React, { Component, createContext } from "react";
 import { Form, Button } from "react-bootstrap";
 import axios from "axios";
+import YearPicker from "react-year-picker";
 
 import { Modal } from "../Modal";
 
@@ -15,12 +16,13 @@ export class AddSpeciesForm extends Component {
     //species form control
     name: "",
     name_link: "",
-    family: "",
-    guard_category: "",
+    family: 0,
+    guard_category: 0,
     sample_number: "",
     bank_code: "",
     bank_code_link: "",
-    year_gathering_place: "",
+    year: 0,
+    gathering_place: "",
     year_gathering_place_link: "",
     sequence__itst2: "",
     sequence_itst2_link: "",
@@ -76,7 +78,8 @@ export class AddSpeciesForm extends Component {
       sample_number,
       bank_code,
       bank_code_link,
-      year_gathering_place,
+      year,
+      gathering_place,
       year_gathering_place_link,
       sequence__itst2,
       sequence_itst2_link,
@@ -115,12 +118,13 @@ export class AddSpeciesForm extends Component {
     const request = {
       name,
       name_link,
-      family,
-      guard_category,
+      familyId: family,
+      guardCategoryId: guard_category,
       sample_number,
       bank_code,
       bank_code_link,
-      year_gathering_place,
+      year,
+      gathering_place,
       year_gathering_place_link,
       sequence__itst2,
       sequence_itst2_link,
@@ -201,7 +205,8 @@ export class AddSpeciesForm extends Component {
       sample_number,
       bank_code,
       bank_code_link,
-      year_gathering_place,
+      year,
+      gathering_place,
       year_gathering_place_link,
       sequence__itst2,
       sequence_itst2_link,
@@ -286,7 +291,7 @@ export class AddSpeciesForm extends Component {
               as="select"
             >
               {families.map(item => (
-                <option value={item.name} key={item.id}>
+                <option value={item.id} key={item.id}>
                   {item.name}
                 </option>
               ))}
@@ -329,11 +334,17 @@ export class AddSpeciesForm extends Component {
             linkValue={bank_code_link}
             onChange={handleInputChange}
           />
+          <Input
+            name="year"
+            labelName="Год"
+            value={year}
+            onChange={handleInputChange}
+          />
           <InputLink
-            labelName="Год, место сбора"
-            name="year_gathering_place"
+            labelName="Место сбора"
+            name="gathering_place"
             linkname="year_gathering_place_link"
-            value={year_gathering_place}
+            value={gathering_place}
             linkValue={year_gathering_place_link}
             onChange={handleInputChange}
           />
