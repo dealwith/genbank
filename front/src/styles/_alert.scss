@@ -1,0 +1,17 @@
+.g-alert {
+  position: fixed;
+  width: calc(100% - var(--aside-width) - 30px);
+  &__close {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+  }
+  &__close-icon {
+    width: 25px;
+    height: 25px;
+    fill: transparent;
+    stroke: black;
+    stroke-linecap: round;
+    stroke-width: 2;
+  }
+}

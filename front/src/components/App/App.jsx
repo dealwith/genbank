@@ -18,7 +18,7 @@ import { alertActions } from "../../actions";
 import { history } from "../../helpers";
 
 const App = props => {
-  const [show, setShow] = useState(true);
+  const [show, setShow] = useState([show]);
   const { alert } = props;
 
   history.listen((location, action) => {
@@ -31,7 +31,18 @@ const App = props => {
       <Header />
       <Main>
         {alert.message && (
-          <div className={`alert ${alert.type}`}>{alert.message}</div>
+          <div className={`alert g-alert ${alert.type}`}>
+            {alert.message}
+            <button
+              className="g-alert__close"
+              aria-labelledby="Close Notification"
+            >
+              <span className="g-hide-visually">Close</span>
+              <svg className="g-alert__close-icon" viewBox="0 0 40 40">
+                <path d="M 10,10 L 30,30 M 30,10 L 10,30"></path>
+              </svg>
+            </button>
+          </div>
         )}
         <Switch>
           <Route path="/" exact component={BasicTable} />
