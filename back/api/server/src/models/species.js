@@ -4,7 +4,20 @@ export default (sequelize, DataTypes) => {
   const Species = sequelize.define('Species', {
     name: DataTypes.STRING,
     name_link: DataTypes.STRING,
-    guard_category: DataTypes.STRING,
+    family_id: {
+      type: DataTypes.INTEGER,
+      references: {
+        model: 'Families',
+        key: 'id'
+      }
+    },
+    guard_category_id: {
+      type: DataTypes.INTEGER,
+      references: {
+        model: 'GuardCategories',
+        key: 'id'
+      }
+    },
     sample_number: DataTypes.STRING,
     bank_code: DataTypes.STRING,
     bank_code_link: DataTypes.STRING,

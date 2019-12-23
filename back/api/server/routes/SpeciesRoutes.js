@@ -10,5 +10,6 @@ speciesRouter.get("/min", SpeciesController.getMinSpecies);
 speciesRouter.get("/exact/:speciesId", SpeciesController.getTheSpecies);
 speciesRouter.post("/family", SpeciesController.addFamiliy);
 speciesRouter.get("/family", SpeciesController.getAllFamilies);
+speciesRouter.get("/guard-categories", SpeciesController.getAllGuardCategories);
 
 export default speciesRouter;

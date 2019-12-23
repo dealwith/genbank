@@ -14,7 +14,7 @@ module.exports = {
       name_link: {
         type: Sequelize.STRING
       },
-      familyId: {
+      family_id: {
         type: Sequelize.INTEGER,
         references: {
           model: {
@@ -24,11 +24,11 @@ module.exports = {
         },
         allowNull: false
       },
-      guardCategoryId: {
+      guard_category_id: {
         type: Sequelize.INTEGER,
         references: {
           model: {
-            tableName: 'GuardCategory'
+            tableName: 'GuardCategories'
           },
           key: 'id'
         },

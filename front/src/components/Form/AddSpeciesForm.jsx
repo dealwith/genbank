@@ -1,15 +1,23 @@
-import React, { Component, createContext } from "react";
+import React, { Component } from "react";
+import { connect } from "react-redux";
 import { Form, Button } from "react-bootstrap";
+import { alertActions } from "../../actions";
 import axios from "axios";
-import YearPicker from "react-year-picker";
 
 import { Modal } from "../Modal";
 
 import { InputLink, Input } from "../Inputs";
-import { SPECIES_API, ADD_FAMILY, GET_FAMILIES } from "../../constants/path";
+import {
+  SPECIES_API,
+  ADD_FAMILY,
+  GET_FAMILIES,
+  GET_GUARD_CATEGORIES
+} from "../../constants/path";
 
-export class AddSpeciesForm extends Component {
+class AddSpeciesForm extends Component {
   state = {
+    // categories
+    guard_categories: [],
     // addFamily control
     addFamily: "",
     families: [],
@@ -118,8 +126,8 @@ export class AddSpeciesForm extends Component {
     const request = {
       name,
       name_link,
-      familyId: family,
-      guardCategoryId: guard_category,
+      family_id: family,
+      guard_category_id: guard_category,
       sample_number,
       bank_code,
       bank_code_link,
@@ -174,6 +182,13 @@ export class AddSpeciesForm extends Component {
       .catch(error => console.error(error));
   };
 
+  getAllGuardCategories = () => {
+    axios
+      .get(GET_GUARD_CATEGORIES)
+      .then(response => this.setState({ guard_categories: response.data.data }))
+      .catch(error => console.error(error));
+  };
+
   handleFamilySubmit = e => {
     e.preventDefault();
     e.stopPropagation();
@@ -190,8 +205,9 @@ export class AddSpeciesForm extends Component {
       .catch(error => console.error(error));
   };
 
-  componentDidMount() {
-    this.getAllFamilies();
+  async componentDidMount() {
+    await this.getAllFamilies();
+    await this.getAllGuardCategories();
   }
 
   render() {
@@ -241,7 +257,9 @@ export class AddSpeciesForm extends Component {
       ncbi_code_matk_link,
       species_identification_result_matk,
       //add family modal
-      addFamily
+      addFamily,
+      // all guard categories
+      guard_categories
     } = this.state;
 
     //class control methods
@@ -290,21 +308,17 @@ export class AddSpeciesForm extends Component {
               size="sm"
               as="select"
             >
-              {families.map(item => (
-                <option value={item.id} key={item.id}>
-                  {item.name}
-                </option>
-              ))}
+              {families
+                ? families.map(item => (
+                    <option value={item.id} key={item.id}>
+                      {item.name}
+                    </option>
+                  ))
+                : null}
             </Form.Control>
             <Modal {...modalProps}>{modalContent}</Modal>
           </Form.Group>
-          <Input
-            name="guard_category"
-            labelName="Категория охраны"
-            value={guard_category}
-            onChange={handleInputChange}
-          />
-          {/* <Form.Group controlId="input-family">
+          <Form.Group controlId="guard_category">
             <Form.Label>Категория охраны</Form.Label>
             <Form.Control
               name="guard_category"
@@ -313,13 +327,13 @@ export class AddSpeciesForm extends Component {
               size="sm"
               as="select"
             >
-              {families.map(item => (
-                <option value={item.name} key={item.id}>
-                  {item.name}
+              {guard_categories.map(category => (
+                <option value={category.id} key={category.id}>
+                  {category.abbreviation}
                 </option>
               ))}
             </Form.Control>
-          </Form.Group> */}
+          </Form.Group>
           <Input
             name="sample_number"
             labelName="№ п/п образца"
@@ -544,3 +558,11 @@ export class AddSpeciesForm extends Component {
     );
   }
 }
+
+const mapStateToProps = state => {
+  const { alert } = state;
+  return { alert };
+};
+
+const connectedAddSpeciesForm = connect(mapStateToProps)(AddSpeciesForm);
+export { connectedAddSpeciesForm as AddSpeciesForm };

@@ -1,11 +1,11 @@
-import database from '../src/models';
+import database from "../src/models";
 
 class SpeciesServices {
   static async getAllSpecies() {
     try {
       return await database.Species.findAll();
     } catch (error) {
-      throw error
+      throw error;
     }
   }
 
@@ -27,17 +27,17 @@ class SpeciesServices {
     try {
       return await database.Species.findAll({
         attributes: [
-          'id',
-          'name',
-          'name_link',
-          'guard_category',
-          'sample_number',
-          'bank_code',
-          'bank_code_link',
-          'year_gathering_place',
-          'year_gathering_place_link'
+          "id",
+          "name",
+          "name_link",
+          "guard_category",
+          "sample_number",
+          "bank_code",
+          "bank_code_link",
+          "year_gathering_place",
+          "year_gathering_place_link"
         ]
-      })
+      });
     } catch (error) {
       throw error;
     }
@@ -63,9 +63,9 @@ class SpeciesServices {
         const deletedGen = await database.Species.destroy({
           where: { id: Number(id) }
         });
-        return deletedGen
+        return deletedGen;
       }
-      
+
       return null;
     } catch (error) {
       throw error;
@@ -74,17 +74,25 @@ class SpeciesServices {
 
   static async addFamily(newFamily) {
     try {
-      return await database.Family.create(newFamily)
+      return await database.Family.create(newFamily);
     } catch (error) {
-      throw error
+      throw error;
     }
   }
 
-  static async getAllFamilies(){
+  static async getAllFamilies() {
     try {
       return await database.Family.findAll();
     } catch (error) {
-      throw error
+      throw error;
+    }
+  }
+
+  static async getAllGuardCategories() {
+    try {
+      return await database.GuardCategory.findAll();
+    } catch (error) {
+      throw error;
     }
   }
 }

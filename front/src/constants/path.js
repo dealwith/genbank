@@ -1,7 +1,8 @@
 export const API = `http://localhost:8000/api/v1`;
 export const SPECIES_API = `${API}/species`;
-export const ADD_FAMILY = `${SPECIES_API}/family`
-export const GET_FAMILIES = `${ADD_FAMILY}`
+export const ADD_FAMILY = `${SPECIES_API}/family`;
+export const GET_FAMILIES = `${ADD_FAMILY}`;
+export const GET_GUARD_CATEGORIES = `${SPECIES_API}/guard-categories`;
 export const SPECIES_MIN = `${SPECIES_API}/min`;
 export const SPECIES_EXACT = `${SPECIES_API}/exact`;
 
