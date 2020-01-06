@@ -348,11 +348,13 @@ class AddSpeciesForm extends Component {
             size="sm"
             as="select"
           >
-            {guard_categories.map(category => (
-              <option value={category.id} key={category.id}>
-                {category.abbreviation}
-              </option>
-            ))}
+            {guard_categories
+              ? guard_categories.map(category => (
+                  <option value={category.id} key={category.id}>
+                    {category.abbreviation}
+                  </option>
+                ))
+              : ""}
           </Form.Control>
         </Form.Group>
         <Input
