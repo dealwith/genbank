@@ -25,23 +25,22 @@ class SpeciesServices {
 
   static async getMinSpecies() {
     try {
-      return await database.Species.findAll({
-        // attributes: [
-        //   "id",
-        //   "name",
-        //   "name_link",
-        //   "family_id",
-        //   "guard_category_id",
-        //   "year",
-        //   "gathering_place",
-        //   "year_gathering_place_link"
-        // ], 
-        include: [{
-          model: database.Family,
-          where: {
-            id: 2
+      return await database.Family.findAll({
+        include: [
+          {
+            model: database.Species,
+            attributes: [
+              "id",
+              "name",
+              "name_link",
+              "family_id",
+              "guard_category_id",
+              "year",
+              "gathering_place",
+              "year_gathering_place_link"
+            ]
           }
-        }]
+        ]
       });
     } catch (error) {
       throw error;
