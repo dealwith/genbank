@@ -7,7 +7,7 @@ export default (sequelize, DataTypes) => {
     family_id: {
       type: DataTypes.INTEGER,
       references: {
-        model: 'Families',
+        model: 'Family',
         key: 'id'
       }
     },

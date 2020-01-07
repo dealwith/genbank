@@ -11,6 +11,8 @@ const Notification = props => {
     props.clearAlerts();
   });
 
+  const closeNotification = () => props.clearAlerts();
+
   return (
     <>
       {alert.message && (
@@ -19,6 +21,7 @@ const Notification = props => {
           <button
             className="g-alert__close"
             aria-labelledby="Close Notification"
+            onClick={closeNotification}
           >
             <span className="g-hide-visually">Close</span>
             <svg className="g-alert__close-icon" viewBox="0 0 40 40">

@@ -15,8 +15,8 @@ class SpeciesController {
       }
 
       return util.send(res);
-    } catch (error) {
-      util.setError(400, eroor.message);
+    } catch (err) {
+      util.setError(400, err.message);
       return util.send(res);
     }
   }
@@ -33,7 +33,7 @@ class SpeciesController {
 
       return util.send(res);
     } catch (error) {
-      util.setError(400, error);
+      util.setError(400, error.message);
       util.send(res);
     }
   }

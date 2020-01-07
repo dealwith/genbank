@@ -1,14 +1,12 @@
-import config from 'dotenv';
-import express from 'express';
-import bodyParser from 'body-parser';
-import cors from 'cors';
+import config from "dotenv";
+import express from "express";
+import bodyParser from "body-parser";
+import cors from "cors";
 
-import genesRouter from './server/routes/GenesRoutes';
-import speciesRouter from './server/routes/SpeciesRoutes';
-import authRouter from './server/routes/AuthRoutes';
-import { AUTH_API,
-GENES_API,
-SPECIES_API }from './server/constants/paths';
+import genesRouter from "./server/routes/GenesRoutes";
+import speciesRouter from "./server/routes/SpeciesRoutes";
+import authRouter from "./server/routes/AuthRoutes";
+import { AUTH_API, GENES_API, SPECIES_API } from "./server/constants/paths";
 
 config.config();
 
@@ -24,9 +22,11 @@ app.use(SPECIES_API, speciesRouter);
 app.use(AUTH_API, authRouter);
 app.use(GENES_API, genesRouter);
 
-app.get('*', (req, res) => res.status(200).send({
-  message: 'Welcome to this API.'
-}));
+app.get("*", (req, res) =>
+  res.status(200).send({
+    message: "Welcome to this API."
+  })
+);
 
 app.listen(port, () => {
   console.log(`Server is running on PORT ${port}`);
@@ -38,9 +38,9 @@ process.on("SIGTERM", function() {
   });
 });
 
-process.on('unhandledRejection', err => {
-  console.log(err)
-  process.exit(1)
-})
+process.on("unhandledRejection", err => {
+  console.log(err);
+  process.exit(1);
+});
 
 export default app;

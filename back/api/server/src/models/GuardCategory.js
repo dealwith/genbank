@@ -13,7 +13,7 @@ module.exports = (sequelize, DataTypes) => {
     }
   }, {});
   GuardCategory.associate = models => {
-    GuardCategory.hasOne(models.Species);
+    GuardCategory.belongsTo(models.Species);
   };
   return GuardCategory;
 };

@@ -9,7 +9,7 @@ module.exports = (sequelize, DataTypes) => {
     name: DataTypes.STRING
   }, {});
   Family.associate = function(models) {
-    Family.hasOne(models.Species)
+    Family.belongsTo(models.Species)
   };
   return Family;
 };

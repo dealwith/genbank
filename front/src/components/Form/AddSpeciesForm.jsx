@@ -200,7 +200,7 @@ class AddSpeciesForm extends Component {
     e.preventDefault();
     e.stopPropagation();
 
-    const { addFamily } = this.state;
+    const { addFamily, families } = this.state;
     const request = {
       name: addFamily
     };
@@ -208,10 +208,7 @@ class AddSpeciesForm extends Component {
     axios
       .post(ADD_FAMILY, request)
       .then(() => this.getAllFamilies())
-      .then(() => {
-        this.setState({ family: request.name });
-        dispatch(alertActions.success("Familiy added"));
-      })
+      .then(() => dispatch(alertActions.success("Familiy added")))
       .catch(error => dispatch(alertActions.error(error.toString())));
   };
 

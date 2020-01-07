@@ -16,6 +16,7 @@ export const BasicTable = () => {
 
     fetchData();
   }, []);
+
   return (
     <>
       {data ? (
@@ -23,10 +24,10 @@ export const BasicTable = () => {
           <thead>
             <tr>
               <th>Название вида</th>
+              <th>Семейство</th>
               <th>Категория охраны</th>
-              <th>№ п/п образца</th>
-              <th>Шифр банка</th>
-              <th>Год, место сбора</th>
+              <th>Год</th>
+              <th>Место сбора</th>
               <th>addition</th>
             </tr>
           </thead>
@@ -36,7 +37,7 @@ export const BasicTable = () => {
                 <td>
                   <a href={species.name_link}>{species.name}</a>
                 </td>
-                <td>{species.guard_category}</td>
+                <td>{species.id}</td>
                 <td>{species.sample_number}</td>
                 <td>
                   <a href={species.bank_code_link}>{species.bank_code}</a>
