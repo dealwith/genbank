@@ -38,7 +38,8 @@ class SpeciesServices {
               "year",
               "gathering_place",
               "year_gathering_place_link"
-            ]
+            ],
+            required: true
           }
         ]
       });
