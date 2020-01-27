@@ -13,7 +13,7 @@ module.exports = (sequelize, DataTypes) => {
     }
   }, {});
   GuardCategory.associate = models => {
-    GuardCategory.belongsTo(models.Species);
+    GuardCategory.hasMany(models.Species, { foreignKey: "family_id" });
   };
   return GuardCategory;
 };

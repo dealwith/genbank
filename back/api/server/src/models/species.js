@@ -57,7 +57,8 @@ export default (sequelize, DataTypes) => {
     ncbi_code_matk_link: DataTypes.STRING,
     species_identification_result_matk: DataTypes.STRING,
   }, {});
-  Species.associate = function (models) {
+  Species.associate = (models) => {
+    Species.belongsTo(models.Family, { foreignKey: 'family_id' });
   };
   return Species;
 };

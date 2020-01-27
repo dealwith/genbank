@@ -11,6 +11,6 @@
     "back": "cd back && yarn start"
   },
   "dependencies": {
-    "concurrently": "^5.0.0"
+    "concurrently": "^5.1.0"
   }
 }

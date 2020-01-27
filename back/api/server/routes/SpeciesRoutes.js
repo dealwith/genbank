@@ -12,4 +12,5 @@ speciesRouter.post("/family", SpeciesController.addFamiliy);
 speciesRouter.get("/family", SpeciesController.getAllFamilies);
 speciesRouter.get("/guard-categories", SpeciesController.getAllGuardCategories);
 
+
 export default speciesRouter;

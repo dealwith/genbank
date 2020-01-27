@@ -34,19 +34,25 @@ export const BasicTable = () => {
           <tbody>
             {data.map(species => (
               <tr key={species.id}>
+                {/* Название вида */}
                 <td>
                   <a href={species.name_link}>{species.name}</a>
                 </td>
+                {/* Семейство */}
                 <td>{species.id}</td>
+                {/* Категория охраны */}
                 <td>{species.sample_number}</td>
+                {/* Год */}
                 <td>
                   <a href={species.bank_code_link}>{species.bank_code}</a>
                 </td>
+                {/* Место сбора */}
                 <td>
                   <a href={species.year_gathering_place_link}>
                     {species.year_gathering_place}
                   </a>
                 </td>
+                {/* addition */}
                 <td>
                   <Link to={`species/${species.id}`}>
                     <Button variant="secondary">more</Button>

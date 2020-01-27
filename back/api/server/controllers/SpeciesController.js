@@ -97,7 +97,7 @@ class SpeciesController {
       if (allFamilies.length > 0) {
         util.setSuccess(200, "Families retrieved", allFamilies);
       } else {
-        util.setSuccess(204 , "No species found");
+        util.setSuccess(204, "No species found");
       }
 
       return util.send(res);
@@ -110,11 +110,11 @@ class SpeciesController {
   static async getAllGuardCategories(req, res) {
     try {
       const allGuardCategories = await SpeciesServices.getAllGuardCategories();
-
+      
       if (allGuardCategories.length > 0) {
         util.setSuccess(200, "Guard categories retrieved", allGuardCategories);
       } else {
-        util.setSuccess(204 , "No categories found");
+        util.setSuccess(204, "No categories found");
       }
 
       return util.send(res);

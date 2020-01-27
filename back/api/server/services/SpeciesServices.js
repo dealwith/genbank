@@ -25,24 +25,39 @@ class SpeciesServices {
 
   static async getMinSpecies() {
     try {
-      return await database.Family.findAll({
+      return await database.Species.findAll({
+        attributes: [
+          "id",
+          "name",
+          "name_link",
+          "family_id",
+          "guard_category_id",
+          "year",
+          "gathering_place",
+          "year_gathering_place_link"
+        ],
         include: [
-          {
-            model: database.Species,
-            attributes: [
-              "id",
-              "name",
-              "name_link",
-              "family_id",
-              "guard_category_id",
-              "year",
-              "gathering_place",
-              "year_gathering_place_link"
-            ],
-            required: true
-          }
+          database.Family
         ]
       });
+      // return await database.Family.findAll({
+      //   include: [
+      //       {
+      //       model: database.Species,
+      //       attributes: [
+      //         "id",
+      //         "name",
+      //         "name_link",
+      //         "family_id",
+      //         "guard_category_id",
+      //         "year",
+      //         "gathering_place",
+      //         "year_gathering_place_link"
+      //       ],
+      //       required: true
+      //     }
+      //   ]
+      // });
     } catch (error) {
       throw error;
     }

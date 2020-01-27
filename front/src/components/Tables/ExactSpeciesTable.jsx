@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { Row, Col } from "react-bootstrap";
+import { Row } from "react-bootstrap";
+import React, { useState, useEffect } from "react";
 
 import { SPECIES_API, SPECIES_EXACT } from "../../constants/path";
 
@@ -14,6 +14,7 @@ export const ExactSpeciesTable = ({ match }) => {
       setSpecies(result.data.data);
     };
     fetchData();
+    console.log(species);
   }, []);
 
   const {
@@ -60,7 +61,7 @@ export const ExactSpeciesTable = ({ match }) => {
   } = species;
 
   return (
-    <div className="g-row_0m">
+    <div className="g-row_0m mb-5">
       <Row>Описание образца</Row>
       <hr />
       <Row>
