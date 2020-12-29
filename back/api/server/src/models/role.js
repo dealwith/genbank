@@ -1,4 +1,5 @@
 'use strict';
+
 export default (sequelize, DataTypes) => {
   const Role = sequelize.define('Role', {
     id: {
