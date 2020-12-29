@@ -5,7 +5,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "./styles/app.scss";
 
 import { store } from "./helpers";
-import { App } from "./components/App/App";
+import { App } from "./components/App";
 
 const root = document.getElementById("root");
 
