@@ -10,7 +10,7 @@ module.exports = {
   development: {
     database: 'genbank',
     username: 'postgres',
-    password: 'initial',
+    password: 'xr*LaLqX7mjY',
     host: '127.0.0.1',
     dialect: 'postgres'
   },
