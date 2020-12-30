@@ -7,7 +7,7 @@ export default (sequelize, DataTypes) => {
     family_id: {
       type: DataTypes.INTEGER,
       references: {
-        model: 'Family',
+        model: 'Families',
         key: 'id'
       }
     },
@@ -57,8 +57,11 @@ export default (sequelize, DataTypes) => {
     ncbi_code_matk_link: DataTypes.STRING,
     species_identification_result_matk: DataTypes.STRING,
   }, {});
+
   Species.associate = (models) => {
-    Species.belongsTo(models.Family, { foreignKey: 'family_id' });
+    Species.belongsTo(models.Families, { foreignKey: 'family_id' });
+    Species.belongsTo(models.GuardCategories, { foreignKey: 'family_id' });
   };
+
   return Species;
 };

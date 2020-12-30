@@ -30,34 +30,18 @@ class SpeciesServices {
           "id",
           "name",
           "name_link",
-          "family_id",
           "guard_category_id",
           "year",
           "gathering_place",
           "year_gathering_place_link"
         ],
         include: [
-          database.Family
+          { model: database.Families,
+            attributes: ['name']
+          },
+          { model: database.GuardCategories },
         ]
       });
-      // return await database.Family.findAll({
-      //   include: [
-      //       {
-      //       model: database.Species,
-      //       attributes: [
-      //         "id",
-      //         "name",
-      //         "name_link",
-      //         "family_id",
-      //         "guard_category_id",
-      //         "year",
-      //         "gathering_place",
-      //         "year_gathering_place_link"
-      //       ],
-      //       required: true
-      //     }
-      //   ]
-      // });
     } catch (error) {
       throw error;
     }

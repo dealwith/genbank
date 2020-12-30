@@ -1,7 +1,7 @@
 'use strict';
 
 export default (sequelize, DataTypes) => {
-  const Role = sequelize.define('Role', {
+  const Roles = sequelize.define('Roles', {
     id: {
       type: DataTypes.INTEGER,
       autoIncrement: true,
@@ -12,8 +12,10 @@ export default (sequelize, DataTypes) => {
       unique: true
     }
   }, {});
-  Role.associate = models => {
-    Role.hasOne(models.User);
+
+  Roles.associate = models => {
+    Roles.hasOne(models.Users);
   };
-  return Role;
+
+  return Roles;
 };

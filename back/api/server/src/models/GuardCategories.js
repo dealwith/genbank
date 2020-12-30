@@ -1,7 +1,7 @@
 'use strict';
 
 module.exports = (sequelize, DataTypes) => {
-  const GuardCategory = sequelize.define('GuardCategory', {
+  const GuardCategories = sequelize.define('GuardCategories', {
     id: {
       type: DataTypes.INTEGER,
       autoIncrement: true,
@@ -12,8 +12,10 @@ module.exports = (sequelize, DataTypes) => {
       unique: true
     }
   }, {});
-  GuardCategory.associate = models => {
-    GuardCategory.hasMany(models.Species, { foreignKey: "family_id" });
+
+  GuardCategories.associate = models => {
+    GuardCategories.hasMany(models.Species, { foreignKey: "guard_category_id" });
   };
-  return GuardCategory;
+
+  return GuardCategories;
 };

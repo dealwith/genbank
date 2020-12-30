@@ -1,21 +1,18 @@
 "use strict";
 
 module.exports = (sequelize, DataTypes) => {
-  const Family = sequelize.define(
-    "Family",
-    {
+  const Families = sequelize.define("Families", {
       id: {
         type: DataTypes.INTEGER,
         autoIncrement: true,
         primaryKey: true
       },
       name: DataTypes.STRING
-    },
-    {}
+    }
   );
-  Family.associate = models => {
-    Family.hasMany(models.Species, { foreignKey: "family_id" });
-    // Family.belongsTo(models.Species, {  })
+  Families.associate = models => {
+    Families.hasMany(models.Species, { foreignKey: "family_id" });
   };
-  return Family;
+
+  return Families;
 };
