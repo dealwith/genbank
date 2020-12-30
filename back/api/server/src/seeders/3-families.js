@@ -6,12 +6,12 @@ module.exports = {
       "Families",
       [
         {
-          name: "Papaya",
+          name: "Cats",
           createdAt: new Date(),
           updatedAt: new Date()
         },
         {
-          name: "Lol",
+          name: "Betulaceae",
           createdAt: new Date(),
           updatedAt: new Date()
         }
