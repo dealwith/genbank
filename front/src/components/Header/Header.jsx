@@ -9,7 +9,7 @@ const Header = ({ user = "" }) => {
       <nav className="g-nav g-header__nav g-text-invert">
         <div>
           <span className="mr-sm-2">
-            {user ? `Hello ${user.name}` : `Hello guest`}
+            {user ? `Привет ${user.name}` : `Привет гость`}
           </span>
           <Link to="/login" className="g-text-invert">
             <Button>{user.name ? "Logout" : "Login"}</Button>
