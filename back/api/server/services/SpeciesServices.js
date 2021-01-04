@@ -14,7 +14,8 @@ class SpeciesServices {
       const theSpecies = await database.Species.findOne({
         where: {
           id: Number(id)
-        }
+        },
+        include: [{ model: database.Families, attributes: ['name'] }, { model: database.GuardCategories, attributes: ['abbreviation']}]
       });
 
       return theSpecies;
@@ -36,10 +37,14 @@ class SpeciesServices {
           "year_gathering_place_link"
         ],
         include: [
-          { model: database.Families,
+          {
+            model: database.Families,
             attributes: ['name']
           },
-          { model: database.GuardCategories },
+          {
+            model: database.GuardCategories,
+            attributes: ['abbreviation']
+          },
         ]
       });
     } catch (error) {
@@ -78,7 +83,7 @@ class SpeciesServices {
 
   static async addFamily(newFamily) {
     try {
-      return await database.Family.create(newFamily);
+      return await database.Families.create(newFamily);
     } catch (error) {
       throw error;
     }
@@ -86,7 +91,7 @@ class SpeciesServices {
 
   static async getAllFamilies() {
     try {
-      return await database.Family.findAll();
+      return await database.Families.findAll();
     } catch (error) {
       throw error;
     }
@@ -94,7 +99,7 @@ class SpeciesServices {
 
   static async getAllGuardCategories() {
     try {
-      return await database.GuardCategory.findAll();
+      return await database.GuardCategories.findAll();
     } catch (error) {
       throw error;
     }
