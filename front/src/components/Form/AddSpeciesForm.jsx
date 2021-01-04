@@ -1,18 +1,20 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Form, Button } from "react-bootstrap";
-import { alertActions } from "../../actions";
 import axios from "axios";
 
-import { Modal } from "../Modal";
-
-import { InputLink, Input } from "../Inputs";
 import {
   SPECIES_API,
   ADD_FAMILY,
   GET_FAMILIES,
   GET_GUARD_CATEGORIES
 } from "../../constants/path";
+import { alertActions } from "../../actions";
+
+import { Modal } from "../Modal";
+import { InputLink, Input } from "../Inputs";
+
+import "./add-species-form.scss";
 
 const initialState = {
   // categories
@@ -78,7 +80,7 @@ class AddSpeciesForm extends Component {
 
   //add species request
   handleSubmit = e => {
-    const dispatch = this.props.dispatch;
+    const { dispatch } = this.props;
 
     e.preventDefault();
 
@@ -174,7 +176,7 @@ class AddSpeciesForm extends Component {
 
     axios
       .post(SPECIES_API, request)
-      .then(() => dispatch(alertActions.success("Species added!")))
+      .then(() => dispatch(alertActions.success("Вид добавлен!")))
       .catch(error => dispatch(alertActions.error(error.toString())));
   };
 
@@ -200,7 +202,7 @@ class AddSpeciesForm extends Component {
     e.preventDefault();
     e.stopPropagation();
 
-    const { addFamily, families } = this.state;
+    const { addFamily } = this.state;
     const request = {
       name: addFamily
     };
@@ -303,7 +305,7 @@ class AddSpeciesForm extends Component {
 
     return (
       <Form
-        className="g-form g-form_add-species mb-5"
+        className="g-form g-form_add-species pb-5"
         method="POST"
         onReset={handleFormReset}
         onSubmit={handleSubmit}
@@ -316,44 +318,48 @@ class AddSpeciesForm extends Component {
           linkValue={name_link}
           onChange={handleInputChange}
         />
-        <Form.Group controlId="input-family">
-          <Form.Label>Семейства</Form.Label>
-          <Form.Control
-            name="family"
-            value={family}
-            onChange={handleInputChange}
-            size="sm"
-            as="select"
-            className="mb-3"
-          >
-            {families
-              ? families.map(item => (
-                  <option value={item.id} key={item.id}>
-                    {item.name}
-                  </option>
-                ))
-              : null}
-          </Form.Control>
-          <Modal {...modalProps}>{modalContent}</Modal>
-        </Form.Group>
-        <Form.Group controlId="guard_category">
-          <Form.Label>Категория охраны</Form.Label>
-          <Form.Control
-            name="guard_category"
-            value={guard_category}
-            onChange={handleInputChange}
-            size="sm"
-            as="select"
-          >
-            {guard_categories
-              ? guard_categories.map(category => (
-                  <option value={category.id} key={category.id}>
-                    {category.abbreviation}
-                  </option>
-                ))
-              : ""}
-          </Form.Control>
-        </Form.Group>
+        <div className="g-form__select">
+          <Form.Group controlId="input-family">
+            <Form.Label>Семейства</Form.Label>
+            <Form.Control
+              name="family"
+              value={family}
+              onChange={handleInputChange}
+              size="sm"
+              as="select"
+              className="mb-3"
+            >
+              {families
+                ? families.map(item => (
+                    <option value={item.id} key={item.id}>
+                      {item.name}
+                    </option>
+                  ))
+                : null}
+            </Form.Control>
+            <Modal {...modalProps}>{modalContent}</Modal>
+          </Form.Group>
+        </div>
+        <div className="g-form__select">
+          <Form.Group controlId="guard_category">
+            <Form.Label>Категория охраны</Form.Label>
+            <Form.Control
+              name="guard_category"
+              value={guard_category}
+              onChange={handleInputChange}
+              size="sm"
+              as="select"
+            >
+              {guard_categories
+                ? guard_categories.map(category => (
+                    <option value={category.id} key={category.id}>
+                      {category.abbreviation}
+                    </option>
+                  ))
+                : ""}
+            </Form.Control>
+          </Form.Group>
+        </div>
         <Input
           name="sample_number"
           labelName="№ п/п образца"
@@ -430,7 +436,7 @@ class AddSpeciesForm extends Component {
           onChange={handleInputChange}
         />
         <hr />
-        Референсная последовательность <strong>RbCl</strong>
+        Референсная последовательность <strong>rbcl</strong>
         <hr />
         <InputLink
           labelName="Буквенный сиквенс (штрихкод)"
@@ -477,7 +483,7 @@ class AddSpeciesForm extends Component {
           onChange={handleInputChange}
         />
         <hr />
-        Референсная последовательность <strong>PSB</strong>
+        Референсная последовательность <strong>psb-trn</strong>
         <hr />
         <InputLink
           labelName="Буквенный сиквенс (штрихкод)"
@@ -524,7 +530,7 @@ class AddSpeciesForm extends Component {
           onChange={handleInputChange}
         />
         <hr />
-        Референсная последовательность <strong>MATK</strong>
+        Референсная последовательность <strong>matK</strong>
         <hr />
         <InputLink
           labelName="Буквенный сиквенс (штрихкод)"
@@ -571,9 +577,9 @@ class AddSpeciesForm extends Component {
           onChange={handleInputChange}
         />
         <Button variant="primary" className="mr-3" type="submit">
-          Submit
+          Добавить
         </Button>
-        <Button type="reset">Reset the form</Button>
+        <Button type="reset">Отчистить поля</Button>
       </Form>
     );
   }
