@@ -4,7 +4,7 @@ import Util from "../utils/Utils";
 export default async (req, res, next) => {
   const util = new Util();
   const decodedTokenData = req.tokenData;
-  const userRecord = await database.User.findOne({
+  const userRecord = await database.Users.findOne({
     where: {
       id: decodedTokenData.id
     }
