@@ -7,7 +7,7 @@ class AuthService {
     try {
       const passwordHashed = await argon2.hash(password);
 
-      const userRecord = await database.User.create({
+      const userRecord = await database.Users.create({
         password: passwordHashed,
         email,
         name
@@ -25,7 +25,7 @@ class AuthService {
   }
 
   static async signIn(email, password) {
-    const userRecord = await database.User.findOne({ where: { email } });
+    const userRecord = await database.Users.findOne({ where: { email } });
     if (!userRecord) {
       throw new Error("User not found");
     } else {
