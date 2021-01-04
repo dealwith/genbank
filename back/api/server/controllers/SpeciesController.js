@@ -110,7 +110,7 @@ class SpeciesController {
   static async getAllGuardCategories(req, res) {
     try {
       const allGuardCategories = await SpeciesServices.getAllGuardCategories();
-      
+
       if (allGuardCategories.length > 0) {
         util.setSuccess(200, "Guard categories retrieved", allGuardCategories);
       } else {
