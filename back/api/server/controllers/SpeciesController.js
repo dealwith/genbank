@@ -21,19 +21,21 @@ class SpeciesController {
     }
   }
 
-  static async getMinSpecies(req, res) {
-    try {
-      const minSpicies = await SpeciesServices.getMinSpecies();
+  static async getLimitedSpecies(req, res) {
+    const { page, size } = req.query;
 
-      if (minSpicies.length > 0) {
-        util.setSuccess(200, "Minimal visual species retrieved", minSpicies);
+    try {
+      const limitedSpecies = await SpeciesServices.getLimitedSpecies(page, size);
+
+      if (limitedSpecies.species.length > 0) {
+        util.setSuccess(200, "Limited species retrieved", limitedSpecies);
       } else {
         util.setSuccess(200, "No species found");
       }
 
       return util.send(res);
-    } catch (error) {
-      util.setError(400, error.message);
+    } catch (err) {
+      util.setError(400, err.message);
       util.send(res);
     }
   }

@@ -1,4 +1,5 @@
 import database from "../src/models";
+import { getPagination, getPagingData } from "../helpers";
 
 class SpeciesServices {
   static async getAllSpecies() {
@@ -24,9 +25,10 @@ class SpeciesServices {
     }
   }
 
-  static async getMinSpecies() {
+  static async getLimitedSpecies({ page, size }) {
     try {
-      return await database.Species.findAll({
+      const { limit, offset } = getPagination(page, size);
+      const limitedSpecies = await database.Species.findAndCountAll({
         attributes: [
           "id",
           "name",
@@ -45,8 +47,13 @@ class SpeciesServices {
             model: database.GuardCategories,
             attributes: ['abbreviation']
           },
-        ]
+        ],
+        limit,
+        offset
       });
+      const pagingData = getPagingData(limitedSpecies, page, limit);
+
+      return pagingData;
     } catch (error) {
       throw error;
     }
