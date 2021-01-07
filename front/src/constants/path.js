@@ -5,6 +5,7 @@ export const GET_FAMILIES = `${ADD_FAMILY}`;
 export const GET_GUARD_CATEGORIES = `${SPECIES_API}/guard-categories`;
 export const SPECIES_MIN = `${SPECIES_API}/min`;
 export const SPECIES_EXACT = `${SPECIES_API}/exact`;
+export const SPECIES_SEARCH = `${SPECIES_API}/search`;
 
 export const AUTH_API = `${API}/auth`;
 export const SIGN_IN = `${AUTH_API}/sign-in`;
