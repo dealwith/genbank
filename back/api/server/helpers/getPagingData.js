@@ -1,6 +1,7 @@
 export const getPagingData = (limitedSpecies, page, limit) => {
 	const { count: totalItems, rows: species } = limitedSpecies;
-	const totalPages = Math.ceil(totalItems / limit);
+	const currentPage = page ? +page : 0;
+	const totalPages = Math.floor(totalItems / limit);
 
-	return { totalPages, currentPage: page, totalItems, species }
+	return { totalPages, currentPage, totalItems, species }
 }
