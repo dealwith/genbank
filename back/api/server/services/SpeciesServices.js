@@ -25,7 +25,7 @@ class SpeciesServices {
     }
   }
 
-  static async getLimitedSpecies({ page, size }) {
+  static async getLimitedSpecies(page, size) {
     try {
       const { limit, offset } = getPagination(page, size);
       const limitedSpecies = await database.Species.findAndCountAll({
