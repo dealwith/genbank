@@ -37,7 +37,8 @@
     "node-sass": "^4.12.0",
     "parcel-bundler": "^1.12.3",
     "prettier": "^1.18.2",
-    "sass": "^1.23.0-module.beta.1"
+    "sass": "^1.23.0-module.beta.1",
+    "typescript": "^4.1.3"
   },
   "dependencies": {
     "@babel/runtime": "^7.5.5",

@@ -1,11 +1,11 @@
 import React, { useEffect } from "react";
 import axios from "axios";
-import { Table, Button } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Table } from "react-bootstrap";
 
 import { useMultiState } from "../../hooks";
 import { SPECIES_SEARCH } from "../../constants/path";
 import { PaginationContainer } from "../Pagination";
+import { BasicTableRow } from "./BasicTableRow";
 
 export const BasicTable = () => {
   const [page, setPage] = useMultiState({
@@ -32,7 +32,7 @@ export const BasicTable = () => {
     };
 
     fetchData();
-  }, [page.currentPage]);
+  }, [page.currentPage, page.pageSize]);
 
   const handleNextClick = () =>
     page.currentPage !== page.totalPages &&
@@ -51,14 +51,19 @@ export const BasicTable = () => {
   const handlePageChange = i =>
     page.currentPage !== i && setPage({ currentPage: i });
 
+  const handleSpeciesPerPageSelect = e =>
+    page.pageSize !== e.target.value && setPage({ pageSize: e.target.value });
+
   const paginationProps = {
     totalPages: page.totalPages,
     currentPage: page.currentPage,
+    pageSize: page.pageSize,
     handleNextClick,
     handlePrevClick,
     handleFirstClick,
     handleLastClick,
-    handlePageChange
+    handlePageChange,
+    handleSpeciesPerPageSelect
   };
 
   const isRenderSpecies = !!page.species.length;
@@ -78,32 +83,7 @@ export const BasicTable = () => {
         </thead>
         <tbody>
           {page.species?.map(species => (
-            <tr key={species.id}>
-              {/* Название вида */}
-              <td>
-                <a href={species.name_link}>{species.name}</a>
-              </td>
-              {/* Семейство */}
-              <td>{species.Family.name}</td>
-              {/* Категория охраны */}
-              <td>{species.GuardCategory.abbreviation}</td>
-              {/* Год */}
-              <td>
-                <a href={species.year_gathering_place_link}>{species.year}</a>
-              </td>
-              {/* Место сбора */}
-              <td>
-                <a href={species.year_gathering_place_link}>
-                  {species.gathering_place}
-                </a>
-              </td>
-              {/* addition */}
-              <td>
-                <Link to={`species/${species.id}`}>
-                  <Button variant="secondary">больше</Button>
-                </Link>
-              </td>
-            </tr>
+            <BasicTableRow key={species.id} {...species} />
           ))}
         </tbody>
       </Table>
