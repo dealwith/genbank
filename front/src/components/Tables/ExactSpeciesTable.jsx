@@ -2,7 +2,7 @@ import axios from "axios";
 import { Row } from "react-bootstrap";
 import React, { useState, useEffect } from "react";
 
-import { SPECIES_API, SPECIES_EXACT } from "../../constants/path";
+import { SPECIES_EXACT } from "../../constants/path";
 
 export const ExactSpeciesTable = ({ match }) => {
   const { params } = match;
@@ -14,17 +14,16 @@ export const ExactSpeciesTable = ({ match }) => {
       setSpecies(result.data.data);
     };
     fetchData();
-    console.log(species);
   }, []);
 
   const {
     name,
     name_link,
-    guard_category,
     sample_number,
     bank_code,
     bank_code_link,
-    year_gathering_place,
+    year,
+    gathering_place,
     year_gathering_place_link,
     sequence__itst2,
     sequence_itst2_link,
@@ -57,11 +56,13 @@ export const ExactSpeciesTable = ({ match }) => {
     ncbi_identity_matk,
     ncbi_code_matk,
     ncbi_code_matk_link,
-    species_identification_result_matk
+    species_identification_result_matk,
+    GuardCategory,
+    Family
   } = species;
 
   return (
-    <div className="g-row_0m mb-5">
+    <div className="g-row_0m pd-2 pb-5">
       <Row>Описание образца</Row>
       <hr />
       <Row>
@@ -73,7 +74,10 @@ export const ExactSpeciesTable = ({ match }) => {
         </span>
       </Row>
       <Row>
-        Категория охраны: <span>{guard_category}</span>
+        Семейство: <span>{Family?.name}</span>
+      </Row>
+      <Row>
+        Категория охраны: <span>{GuardCategory?.abbreviation}</span>
       </Row>
       <Row>
         № п/п образца: <span>{sample_number}</span>
@@ -90,7 +94,7 @@ export const ExactSpeciesTable = ({ match }) => {
         Год, место сбора:
         <span>
           <a target="_blank" href={year_gathering_place_link}>
-            {year_gathering_place}
+            {`${year}, ${gathering_place}`}
           </a>
         </span>
       </Row>
